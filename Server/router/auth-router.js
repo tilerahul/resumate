@@ -6,4 +6,4 @@ router.route("/").get(authControllers.home);
 router.route("/login").post(authControllers.login);
 router.route("/register").post(authControllers.register);
 
-module.exports = router
+module.exports = router;
