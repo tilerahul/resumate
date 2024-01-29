@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import './App.css'
-import Body from '../components/body'
-function App() {
 
+import './App.css'
+import Home from './components/Home'
+function App() {
   return (
     <>
-      <h1 className='text-4xl text-center'>Resumate</h1>
+      <Home/>
     </>
   )
 }
