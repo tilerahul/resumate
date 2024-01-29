@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Navbar from './navbar'
 function Body() {
     return (
-        <h1>Resumate</h1>
+        <>
+        <Navbar/>
+        </>
     )
 }
 

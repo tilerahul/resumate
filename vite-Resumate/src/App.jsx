@@ -5,7 +5,7 @@ function App() {
 
   return (
     <>
-      <Body/>
+      <h1 className='text-4xl text-center'>Resumate</h1>
     </>
   )
 }
