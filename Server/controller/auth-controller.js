@@ -1,8 +1,9 @@
 const User = require("../models/userModel");
+const jwt = require('jsonwebtoken');
 
 const home = (req, res) =>{
     try {
-        res.status(200).send("<h1>This is the home</h1>");
+        res.status(200).send("<h1>This is the resumate home</h1>");
     } catch (error) {
         res.status(404).json({msg:"Page not found"});
     }
@@ -13,20 +14,28 @@ const login = async (req, res) =>{
 
         const userExist = await User.findOne({email});
         if(!userExist){
-            res.status(404).json({
+            return res.status(404).json({
                 success : false,
                 message : 'User not found or please register first',
             })
         }
         if(password !== userExist.password){
-            res.status(404).json({
+            return res.status(404).json({
                 success : false,
                 message : 'Invalid Credentials',
             })
         }
-        res.status(200).json({
+        const token = await jwt.sign({
+            userId : userExist._id.toString(),
+            isAdmin : userExist.isAdmin,
+        },
+        process.env.JWT_SECRET_KEY, {
+            expiresIn : '1h'
+        })
+        return res.status(200).json({
             success : true,
-            message : 'Login Successful'
+            message : 'Login Successful',
+            token 
         })
 
     } catch (error) {
@@ -39,14 +48,14 @@ const register = async (req, res) =>{
         const {firstName, lastName, email, phone, password} = req.body;
         const userExist = await User.findOne({email});
         if(userExist){
-            res.status(400).json({
+            return res.status(400).json({
                 success : false,
                 message : 'Email already exist',
             })
         }
         const userCreated = await User.create({firstName, lastName, email, phone, password});
 
-        res.status(404).json({
+        return res.status(404).json({
             success : true,
             message : 'Registration Successful',
             userId : userCreated._id.toString(),

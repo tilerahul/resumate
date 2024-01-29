@@ -7,6 +7,9 @@ const dbConnect = require("./DBconnection/db");
 app.use(express.json());
 
 app.use("/api/auth", authRoute);
+app.use("/api/resume", resumeRoute);
+app.use("/section", sectionRoute);
+
 dbConnect();
 
 app.listen(process.env.PORT, ()=>{
