@@ -179,4 +179,5 @@ const langaugeController = (req, res) =>{
 
 module.exports = {basicDetailController, educationController, experienceController, 
     skillController, projectController, achievementController, certificationController, 
-    langaugeController};
+    langaugeController
+};

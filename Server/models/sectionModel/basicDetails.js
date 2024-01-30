@@ -6,11 +6,9 @@ const basicDetailSchema = new mongoose.Schema({
     website : [{
         name :{
             type : String,
-            require:true
         },
         url : {
-            type : String, 
-            require:true
+            type : String,
         }
     }], 
 })

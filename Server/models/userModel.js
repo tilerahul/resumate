@@ -33,7 +33,14 @@ const userSchema = new mongoose.Schema({
     joinedAt : {
         type : Date,
         default : Date.now,
-    }
+    },
+    imgUrl : {
+        type : String,
+    },
+    resumeId : [{
+        type:mongoose.Schema.Types.ObjectId,
+        ref : 'Resume'
+    }]
 })
 
 const User = new mongoose.model("User", userSchema);
