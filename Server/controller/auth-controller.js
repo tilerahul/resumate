@@ -28,7 +28,7 @@ const login = async (req, res) =>{
             })
         }
         const token = jwt.sign({
-            userId : userExist._id.toString(),
+            userId : userExist._id,
             isAdmin : userExist.isAdmin,
         },
         process.env.JWT_SECRET_KEY, {

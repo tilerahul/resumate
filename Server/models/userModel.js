@@ -37,10 +37,10 @@ const userSchema = new mongoose.Schema({
     imgUrl : {
         type : String,
     },
-    resumeId : [{
+    resumeId : {
         type:mongoose.Schema.Types.ObjectId,
         ref : 'Resume'
-    }]
+    }
 })
 
 const User = new mongoose.model("User", userSchema);
