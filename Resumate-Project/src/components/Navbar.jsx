@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
-
+import { Routes, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function Navbar() {
   useEffect(() => {
-    // Your existing code for handling burger menus and cleanup
     const burger = document.querySelectorAll('.navbar-burger');
     const menu = document.querySelectorAll('.navbar-menu');
 
@@ -18,7 +18,6 @@ function Navbar() {
       }
     }
 
-    // close
     const close = document.querySelectorAll('.navbar-close');
     const backdrop = document.querySelectorAll('.navbar-backdrop');
 
@@ -34,7 +33,6 @@ function Navbar() {
       }
     }
 
-    // Cleanup event listeners on component unmount
     return () => {
       if (burger.length && menu.length) {
         for (let i = 0; i < burger.length; i++) {
@@ -86,13 +84,13 @@ function Navbar() {
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
-                    <li><a className="text-sm text-gray-400 hover:text-gray-500" href="#">Blog</a></li>
+                    <li><a className="text-sm text-gray-400 hover:text-gray-500" href="#">Services</a></li>
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
-                    <li><a className="text-sm text-gray-400 hover:text-gray-500" href="#">FAQ</a></li>
+                    <li><a className="text-sm text-gray-400 hover:text-gray-500" href="#">Pricing</a></li>
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
@@ -100,8 +98,8 @@ function Navbar() {
                     </li>
                     <li><a className="text-sm text-gray-400 hover:text-gray-500" href="#">Contact</a></li>
                 </ul>
-                <a className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200" href="#">Sign In</a>
-                <a className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200" href="#">Sign up</a>
+                <Link to="/login" className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200 text-decoration-none" href="#">Sign In</Link>
+                <Link to="/CreateAccount" className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200 text-decoration-none" href="#">Sign up</Link>
             </nav>
             <div className="navbar-menu relative z-50 hidden">
                 <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
@@ -128,10 +126,10 @@ function Navbar() {
                                 <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">About Us</a>
                             </li>
                             <li className="mb-1">
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Blog</a>
+                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Services</a>
                             </li>
                             <li className="mb-1">
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">FAQ</a>
+                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Pricing</a>
                             </li>
                             <li className="mb-1">
                                 <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Contact</a>
@@ -140,8 +138,8 @@ function Navbar() {
                     </div>
                     <div className="mt-auto">
                         <div className="pt-6">
-                            <a className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl" href="#">Sign in</a>
-                            <a className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl" href="#">Sign Up</a>
+                            <Link to="/login" className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl text-decoration-none" href="#">Sign in</Link>
+                            <Link to="/CreateAccount" className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl text-decoration-none" href="#">Sign Up</Link>
                         </div>
                     </div>
                 </nav>
@@ -149,5 +147,4 @@ function Navbar() {
         </body>
   );
 }
-
 export default Navbar;

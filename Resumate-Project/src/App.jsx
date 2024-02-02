@@ -1,13 +1,20 @@
-import { useState } from 'react'
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Home from './components/Home'
+import Navbar from './components/Navbar';
+import CreateAccount from './components/CreateAccount';
+import Login from './components/login';
 function App() {
   return (
-    <>
-      <Home/>
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Navbar" element={<Navbar />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/CreateAccount" element={<CreateAccount />} />
+      </Routes>
+    </Router>
   )
 }
-
 export default App

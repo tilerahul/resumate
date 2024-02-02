@@ -1,14 +1,12 @@
-import React from 'react'
-import Navbar from './Navbar'
-import Hero from './Hero'
+import React from 'react';
+import Navbar from './Navbar';
+
 function Home() {
-    return (
-        <div className="Home">
-            <Navbar/>
-            <Hero/>
-        </div>
-        
-    )
+  return (
+    <>
+      <Navbar/>
+    </>
+  );
 }
 
-export default Home
+export default Home;
