@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react';
-import { Routes, Route } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 function Navbar() {
   useEffect(() => {
@@ -55,12 +54,15 @@ function Navbar() {
   }, []);
 
   return (
-    <body className="bg-blue-500">
+    <div className="bg-blue-500 w-11/12 m-auto fixed">
             <nav className="relative px-4 py-4 flex justify-between items-center bg-white">
                 <a className="text-3xl font-bold leading-none" href="#">
                     <div className="ml-5 h-10 flex gap-2" alt="logo" viewBox="0 0 10240 10240">
-                        <img src="logo.png" alt="" className="h-8 w-8 " />
-                        <h1 className="font-medium font-serif">Resumate</h1>
+                        <Link to="/" className='flex gap-2'>
+                          <img src="logo.png" alt="" className="h-8 w-8 " />
+                          <h1 className="font-medium font-serif">Resumate</h1>
+                        </Link>
+                        
                     </div>
                 </a>
                 <div className="lg:hidden">
@@ -144,7 +146,7 @@ function Navbar() {
                     </div>
                 </nav>
             </div>
-        </body>
+        </div>
   );
 }
 export default Navbar;

@@ -1,12 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
 
 function Login() {
   return (
     <>
-      <Navbar />
-      <section className="bg-gray-50 dark:bg-gray-900">
+      <section className="bg-gray-50 dark:bg-gray-900 pt-14">
         <div className="flex justify-center h-auto">
           <div className="w-full max-w-md bg-white rounded-lg shadow dark:border dark:bg-gray-800 dark:border-gray-700 mt-9">
             <div className="p-6 space-y-4 md:space-y-6">

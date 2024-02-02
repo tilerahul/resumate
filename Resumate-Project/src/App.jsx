@@ -8,9 +8,9 @@ import Login from './components/login';
 function App() {
   return (
     <Router>
+      <Navbar/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/Navbar" element={<Navbar />} />
         <Route path="/login" element={<Login />} />
         <Route path="/CreateAccount" element={<CreateAccount />} />
       </Routes>
