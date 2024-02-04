@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 function Login() {
@@ -8,7 +8,7 @@ function Login() {
     password : ""
   })
 
-  const history = useHistory();
+  // const history = useHistory();
 
   const changeHandler = (e) =>{
     setUser({...user,
@@ -17,7 +17,6 @@ function Login() {
   }
   const clickHandler = () =>{
     toast.success('login successful');
-    history.push('/')
   }
   return (
     <>
