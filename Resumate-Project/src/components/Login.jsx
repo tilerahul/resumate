@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 // import toast from 'react-hot-toast';
+=======
+import toast from 'react-hot-toast';
+>>>>>>> 93ac80505259145f41e497f92072c49fcc35554b
 
 function Login() {
   const [user, setUser] = useState({
@@ -17,7 +21,10 @@ function Login() {
   }
   const clickHandler = () =>{
     toast.success('login successful');
+<<<<<<< HEAD
     // history.push('/')
+=======
+>>>>>>> 93ac80505259145f41e497f92072c49fcc35554b
   }
   return (
     <>
