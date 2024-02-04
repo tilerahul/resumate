@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function Login() {
   const [user, setUser] = useState({
@@ -7,30 +8,17 @@ function Login() {
     password : ""
   })
 
+  const history = useHistory();
+
   const changeHandler = (e) =>{
     setUser({...user,
       [e.target.name] : e.target.value
       })
   }
-
-  const submitHandler = async(e) =>{
-    e.preventDefalut();
-    toast.success('submit handle');
-    // try {
-    //   const resposnce = await fetch('http://localhost:5000/api/v1/auth/login',{
-    //     method : 'POST',
-    //     headers : {
-    //       'Content-Type' : 'application/json'
-    //     },
-    //     body : JSON.stringify(user)
-    //   })
-    //   const data = await resposnce.json();
-    //   console.log(data);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+  const clickHandler = () =>{
+    toast.success('login successful');
+    history.push('/')
   }
-
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900 pt-14">
@@ -82,7 +70,7 @@ function Login() {
                 </div>
                 <button
                   type="submit"
-                  onSubmit={submitHandler}
+                  onClick={clickHandler}
                   className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Sign in

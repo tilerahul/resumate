@@ -4,7 +4,7 @@ import './App.css'
 import Home from './components/Home'
 import Navbar from './components/Navbar';
 import CreateAccount from './components/CreateAccount';
-import Login from './components/login';
+import Login from './components/Login';
 function App() {
   return (
     <Router>

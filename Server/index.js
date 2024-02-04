@@ -10,9 +10,15 @@ const cors = require('cors');
 app.use(express.json());
 app.use(cors());
 
+app.get('/api/demo', (req, res)=>{
+    res.status(200).json({
+        msg : "this is demo router"
+    })
+})
+
 app.use("/api/v1/auth", authRoute);
 app.use("/api v1/resume", resumeRoute);
-app.use("/v1/section", sectionRoute);
+app.use("/api/v1/section", sectionRoute);
 
 dbConnect();
 
