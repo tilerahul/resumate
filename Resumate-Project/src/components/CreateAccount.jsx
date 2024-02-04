@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 function CreateAccount() {
   const [data, setData] = useState({
@@ -18,6 +19,32 @@ function CreateAccount() {
     })
   }
 
+  const submitHandler = async (e) =>{
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/api/v1/auth/register', {
+        method : 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(data)
+      })
+      if(response.ok){
+        toast.success('Registration successful');
+        navigate('/')
+      }
+      else{
+        toast.error('Registration failed');
+      }
+      console.log(response);
+      
+      
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong');
+    }
+  }
+
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900 pt-16">
@@ -31,7 +58,7 @@ function CreateAccount() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Create account
               </h1>
-              <form className="space-y-4 md:space-y-6" action="#">
+              <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label htmlFor="firstName" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">First name</label>
@@ -67,7 +94,7 @@ function CreateAccount() {
                     <input id="terms" aria-describedby="terms" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800" required=""/>
                   </div>
                   <div className="ml-3 text-sm">
-                    <label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">I accept the <a className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</a></label>
+                    <label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">I accept the <Link className="font-medium text-primary-600 hover:underline dark:text-primary-500" href="#">Terms and Conditions</Link></label>
                   </div>
                 </div>
                 <button type="submit" className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Create an account</button>

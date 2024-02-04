@@ -8,7 +8,11 @@ const dbConnect = require("./DBconnection/db");
 const cors = require('cors');
 
 app.use(express.json());
-app.use(cors());
+var corsOptions = {
+    origin: 'http://localhost:5173',
+    optionsSuccessStatus: 200
+  }
+app.use(cors(corsOptions));
 
 app.get('/api/demo', (req, res)=>{
     res.status(200).json({

@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-<<<<<<< HEAD
-// import toast from 'react-hot-toast';
-=======
-import toast from 'react-hot-toast';
->>>>>>> 93ac80505259145f41e497f92072c49fcc35554b
+import { Link, useNavigate } from 'react-router-dom';
+
 
 function Login() {
   const [user, setUser] = useState({
@@ -12,19 +9,38 @@ function Login() {
     password : ""
   })
 
-  // const history = useHistory();
+  const navigate = useNavigate();
 
   const changeHandler = (e) =>{
     setUser({...user,
       [e.target.name] : e.target.value
       })
   }
-  const clickHandler = () =>{
-    toast.success('login successful');
-<<<<<<< HEAD
-    // history.push('/')
-=======
->>>>>>> 93ac80505259145f41e497f92072c49fcc35554b
+  
+  const submitHandler = async (e) =>{
+    e.preventDefault();
+    try {
+      const response = await fetch('http://localhost:5000/api/v1/auth/login', {
+        method : 'POST',
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        body : JSON.stringify(user)
+      })
+      if(response.ok){
+        toast.success('login successful');
+        navigate('/')
+      }
+      else{
+        toast.error('login failed');
+      }
+      console.log(response);
+      
+      
+    } catch (error) {
+      console.log(error);
+      toast.error('Something went wrong');
+    }
   }
   return (
     <>
@@ -39,7 +55,7 @@ function Login() {
               <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
                 Sign in to your account
               </h1>
-              <form className="space-y-4 md:space-y-6">
+              <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
                 <div>
                   <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                     Your email
@@ -71,13 +87,13 @@ function Login() {
                   />
                 </div>
                 <div className="flex items-center justify-between">
-                  <a href="#" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
+                  <Link to="/forgotpassword" className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500">
                     Forgot password?
-                  </a>
+                  </Link>
                 </div>
                 <button
                   type="submit"
-                  onClick={clickHandler}
+                  name='submit'
                   className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Sign in
