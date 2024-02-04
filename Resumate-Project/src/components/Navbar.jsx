@@ -86,21 +86,19 @@ function Navbar() {
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
-<<<<<<< HEAD
                     <li><a className="text-sm text-gray-400 hover:text-gray-500" href="#">FAQ</a></li>
 =======
                     <li><Link className="text-sm text-gray-400 hover:text-gray-500" to="services">Services</Link></li>
->>>>>>> 249876b (login registration fuctionality)
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
-<<<<<<< HEAD
+
                     <li><a className="text-sm text-gray-400 hover:text-gray-500" href="#">Blog</a></li>
-=======
+
                     <li><Link className="text-sm text-gray-400 hover:text-gray-500" to="pricing">Pricing</Link></li>
->>>>>>> 249876b (login registration fuctionality)
+
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
@@ -136,17 +134,16 @@ function Navbar() {
                                 <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/about">About Us</Link>
                             </li>
                             <li className="mb-1">
-<<<<<<< HEAD
+
                                 <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">FAQ</a>
                             </li>
                             <li className="mb-1">
                                 <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Blog</a>
-=======
+
                                 <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/services">Services</Link>
                             </li>
                             <li className="mb-1">
                                 <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="pricing">Pricing</Link>
->>>>>>> 249876b (login registration fuctionality)
                             </li>
                             <li className="mb-1">
                                 <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="contact">Contact</Link>
