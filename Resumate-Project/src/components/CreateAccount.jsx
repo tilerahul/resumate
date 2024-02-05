@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
+import axios from 'axios';
 
 function CreateAccount() {
   const [data, setData] = useState({
     firstName : "",
     lastName : "",
     email : "",
+    phone: "",
     password : "",
-    cpassword : "", 
-    phone: ""
+    cpassword : ""
   })
 
   const changeHandler = (e) =>{
@@ -21,28 +22,23 @@ function CreateAccount() {
 
   const submitHandler = async (e) =>{
     e.preventDefault();
-    try {
-      const response = await fetch('http://localhost:5000/api/v1/auth/register', {
-        method : 'POST',
-        headers : {
-          'Content-Type' : 'application/json'
-        },
-        body : JSON.stringify(data)
-      })
-      if(response.ok){
-        toast.success('Registration successful');
-        navigate('/')
+    console.log(data)
+    axios.post('http://localhost:5000/api/v1/auth/register', data)
+    .then((response)=>{
+      console.log(response.data)
+      if(response.data.success){
+        toast.success(response.data.message);
+        navigate('/login')
       }
       else{
-        toast.error('Registration failed');
+        toast.error(response.data.message);
       }
-      console.log(response);
-      
-      
-    } catch (error) {
+
+    })
+    .catch((error)=>{
       console.log(error);
-      toast.error('Something went wrong');
-    }
+      toast.error('Something wend wrong')
+    });
   }
 
   return (
