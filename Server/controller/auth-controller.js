@@ -40,8 +40,9 @@ const login = async (req, res) =>{
         process.env.JWT_SECRET_KEY, {
             expiresIn : '1h'
         })
+        req.user = token;
         return res.cookie('token', token, {
-            expire: new Date(new Date().getTime()+5*60*1000,{
+            expire: new Date(new Date().getTime()+10*1000,{
                 httpOnly : true
             })
         }).status(200).json({
@@ -85,4 +86,12 @@ const register = async (req, res) =>{
     }
 }
 
-module.exports = {home, register, login};
+const getUser = (req, res) =>{
+    try {
+        res.status(200).send("<h1>This is the Resumate Home page</h1>");
+    } catch (error) {
+        res.status(404).json({msg:"Page not found"});
+    }
+}
+
+module.exports = {home, register, login, getUser}; 

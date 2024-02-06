@@ -5,6 +5,8 @@ import Home from './components/Home'
 import Navbar from './components/Navbar';
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
+import Contact from './components/Contact';
+
 function App() {
   return (
     <Router>
@@ -13,6 +15,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/CreateAccount" element={<CreateAccount />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   )

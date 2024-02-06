@@ -1,7 +1,10 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
+import { IoMdArrowDropdown } from "react-icons/io";
 
 function Navbar() {
+
+  const [logged, setLogged] = useState(true);
   useEffect(() => {
     const burger = document.querySelectorAll('.navbar-burger');
     const menu = document.querySelectorAll('.navbar-menu');
@@ -55,7 +58,7 @@ function Navbar() {
   }, []);
 
   return (
-    <div className="bg-blue-500 w-11/12 m-auto fixed">
+    <div className="bg-blue-500 w-11/12 fixed">
             <nav className="relative px-4 py-4 flex justify-between items-center bg-white">
                 <Link className="text-3xl font-bold leading-none" to="/">
                     <div className="ml-5 h-10 flex gap-2" alt="logo" viewBox="0 0 10240 10240">
@@ -75,40 +78,46 @@ function Navbar() {
                     </button>
                 </div>
                 <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-                    <li><Link to="/" className="text-sm text-gray-400 hover:text-gray-500">Home</Link></li>
+                    <li><NavLink to="/" className="text-sm text-gray-400 hover:text-gray-500">Home</NavLink></li>
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
-                    <li><Link className="text-sm text-blue-600 font-bold" to="/about">About Us</Link></li>
+                    <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="/about">About Us</NavLink></li>
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
-                    <li><Link className="text-sm text-gray-400 hover:text-gray-500" to="/faq">FAQ</Link></li>
+                    <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="/faq">FAQ</NavLink></li>
 
-                    <li><Link className="text-sm text-gray-400 hover:text-gray-500" to="services">Services</Link></li>
+                    <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="services">Services</NavLink></li>
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
 
-                    <li><a className="text-sm text-gray-400 hover:text-gray-500" href="#">Blog</a></li>
-
-                    <li><Link className="text-sm text-gray-400 hover:text-gray-500" to="pricing">Pricing</Link></li>
+                    <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="/blog">Blog</NavLink></li>
 
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
-                    <li><Link className="text-sm text-gray-400 hover:text-gray-500" to="contact">Contact</Link></li>
+                    <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="contact">Contact</NavLink></li>
                 </ul>
-                <Link to="/login" className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200 text-decoration-none">Sign In</Link>
+                {!logged && <div>
+                  <Link to="/login" className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200 text-decoration-none">Sign In</Link>
                 <Link to="/CreateAccount" className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200 text-decoration-none">Sign up</Link>
+                </div> }
+
+                {logged && <div className='flex items-center gap-2'>
+                  <p>Rahul Tile</p>
+                  <img src="https://ui-avatars.com/api/?name=Rahul+Tile" className='rounded-full w-[35px]' alt="img"/>
+                  <IoMdArrowDropdown />
+                  </div>}
             </nav>
             <div className="navbar-menu relative z-50 hidden">
                 <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
@@ -152,10 +161,10 @@ function Navbar() {
                         </ul>
                     </div>
                     <div className="mt-auto">
-                        <div className="pt-6">
+                        {logged && <div className="pt-6">
                             <Link to="/login" className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl text-decoration-none">Sign in</Link>
                             <Link to="/CreateAccount" className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl text-decoration-none">Sign Up</Link>
-                        </div>
+                        </div>}
                     </div>
                 </nav>
             </div>
