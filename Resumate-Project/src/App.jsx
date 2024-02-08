@@ -6,6 +6,8 @@ import Navbar from './components/Navbar';
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import Contact from './components/Contact';
+import Profile from './components/Profile';
+import Footer from './components/Footer';
 
 function App() {
   return (
@@ -16,7 +18,9 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/CreateAccount" element={<CreateAccount />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
+        <Footer/>
       </Router>
     
   )
