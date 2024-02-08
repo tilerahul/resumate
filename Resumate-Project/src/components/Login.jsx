@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import axios from 'axios'
+import { useAuth } from '../../Reducers/Authentication/AuthContext';
 
 
 function Login() {
+  const {login} = useAuth();
   const [user, setUser] = useState({
     email : "",
     password : ""
@@ -25,9 +27,9 @@ function Login() {
     .then((response)=>{
       console.log(response.data)
       if(response.data.success){
+        login(response.data.token, response.data.user)
         toast.success(response.data.message);
-        localStorage.setItem('token', response.data.token);
-        navigate('/')
+        navigate('/');
       }
       else{
         toast.error(response.data.message);

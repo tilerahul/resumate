@@ -48,6 +48,7 @@ const login = async (req, res) =>{
         }).status(200).json({
             success : true,
             message : 'Login Successful',
+            user : userExist,
             token 
         })
 

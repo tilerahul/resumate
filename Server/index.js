@@ -14,11 +14,6 @@ var corsOptions = {
   }
 app.use(cors(corsOptions));
 
-app.get('/api/demo', (req, res)=>{
-    res.status(200).json({
-        msg : "this is demo router"
-    })
-})
 
 app.use("/api/v1/auth", authRoute);
 app.use("/api v1/resume", resumeRoute);

@@ -1,10 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { IoMdArrowDropdown } from "react-icons/io";
+import { IoMdArrowDropdown, IoMdArrowDropup  } from "react-icons/io";
+import { useAuth } from '../../Reducers/Authentication/AuthContext';
+import toast from 'react-hot-toast';
 
 function Navbar() {
+  const {state, logout} = useAuth();
+  const [dropDown, setDropDown] = useState(false);
 
-  const [logged, setLogged] = useState(true);
+  useEffect(()=>{
+    setDropDown(false);
+  }, [state])
+
+  const logoutHandler = () =>{
+    logout();
+    toast.success("Successfully Logout")
+  }
   useEffect(() => {
     const burger = document.querySelectorAll('.navbar-burger');
     const menu = document.querySelectorAll('.navbar-menu');
@@ -91,11 +102,15 @@ function Navbar() {
                         </svg>
                     </li>
                     <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="/faq">FAQ</NavLink></li>
-
-                    <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="services">Services</NavLink></li>
                     <li className="text-gray-300">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                        </svg>
+                    </li>
+                    <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="services">Services</NavLink></li>
+                    <li className="text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
                         </svg>
                     </li>
 
@@ -108,15 +123,27 @@ function Navbar() {
                     </li>
                     <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="contact">Contact</NavLink></li>
                 </ul>
-                {!logged && <div>
+                {!state.isAuthenticated && <div>
                   <Link to="/login" className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200 text-decoration-none">Sign In</Link>
                 <Link to="/CreateAccount" className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200 text-decoration-none">Sign up</Link>
                 </div> }
 
-                {logged && <div className='flex items-center gap-2'>
-                  <p>Rahul Tile</p>
-                  <img src="https://ui-avatars.com/api/?name=Rahul+Tile" className='rounded-full w-[35px]' alt="img"/>
-                  <IoMdArrowDropdown />
+                {state.isAuthenticated && <div className='flex items-center gap-2 font-medium relative'>
+                  <p>{`${state.user.firstName} ${state.user.lastName}`}</p>
+                  <img src={state.user.imgUrl} className='rounded-full w-[35px]' alt="img"/>
+                  {dropDown ? (<IoMdArrowDropup onClick={()=>{setDropDown(!dropDown)}}/>) :
+                   (<IoMdArrowDropdown onClick={()=>{setDropDown(!dropDown)}}/>)
+                   }
+                  {
+                      dropDown && <div className='absolute top-9 left-6'>
+                        <div className='w-[20px] h-[20px] bg-slate-100 rounded-md absolute -top-2 rotate-45 right-[82px]'></div>
+                        <div className='w-[200px] h-[80px] bg-slate-100 rounded-md flex flex-col justify-center p-5 gap-2'>
+                              <Link to="/profile">Your Profile</Link>
+                              <p onClick={logoutHandler} className='cursor-pointer'>Logout</p>
+                        </div>
+                        
+                      </div>
+                  }
                   </div>}
             </nav>
             <div className="navbar-menu relative z-50 hidden">
@@ -145,10 +172,10 @@ function Navbar() {
                             </li>
                             <li className="mb-1">
 
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">FAQ</a>
+                                <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/faq">FAQ</Link>
                             </li>
                             <li className="mb-1">
-                                <a className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" href="#">Blog</a>
+                                <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/blog">Blog</Link>
 
                                 <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/services">Services</Link>
                             </li>
@@ -161,7 +188,7 @@ function Navbar() {
                         </ul>
                     </div>
                     <div className="mt-auto">
-                        {logged && <div className="pt-6">
+                        {state.isAuthenticated && <div className="pt-6">
                             <Link to="/login" className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl text-decoration-none">Sign in</Link>
                             <Link to="/CreateAccount" className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl text-decoration-none">Sign Up</Link>
                         </div>}
@@ -171,4 +198,6 @@ function Navbar() {
         </div>
   );
 }
+
+
 export default Navbar;

@@ -9,15 +9,16 @@ import Contact from './components/Contact';
 
 function App() {
   return (
-    <Router>
-      <Navbar/>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/CreateAccount" element={<CreateAccount />} />
-        <Route path="/contact" element={<Contact />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Navbar/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/CreateAccount" element={<CreateAccount />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Router>
+    
   )
 }
 export default App

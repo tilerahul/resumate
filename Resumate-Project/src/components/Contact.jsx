@@ -1,8 +1,31 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useAuth } from '../../Reducers/Authentication/AuthContext';
+import { useNavigate } from 'react-router-dom';
+import toast from 'react-hot-toast';
 
 
 function Contact() {
+  const {state} = useAuth();
+  const navigate = useNavigate();
+  const [data, setData] = useState({
+    firstName : "",
+    lastName : "",
+    email : "",
+  });
+
+  useEffect(()=>{
+    if(!state.isAuthenticated){
+      toast.error('Please login first');
+      navigate('/login');
+    }else{
+      setData({
+        firstName : state.user.firstName,
+        lastName : state.user.lastName,
+        email : state.user.email
+      })
+    }
+    
+  }, [data])
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900 pt-14">
@@ -25,6 +48,7 @@ function Contact() {
                     type="name"
                     name="name"
                     id="name"
+                    value={`${data.firstName} ${data.lastName}`}
                     placeholder="Enter Your Name"
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     required
@@ -38,6 +62,7 @@ function Contact() {
                     type="email"
                     name="email"
                     id="email"
+                    value={data.email}
                     className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Enter your Email"
                     required
