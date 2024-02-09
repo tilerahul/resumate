@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Contact from './components/Contact';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
+import About from './components/about/About';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/CreateAccount" element={<CreateAccount />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/about" element={<About />} />
         </Routes>
         <Footer/>
       </Router>

@@ -7,7 +7,7 @@ const Footer = () => {
                 <div class="flex flex-col items-center text-center">
                     <Link to="/" className='flex gap-2'>
                         <img src="logo.png" alt="" className="h-8 w-8 " />
-                        <h1 className="font-medium font-serif mt-1">Resumate</h1>
+                        <h1 className="font-medium font-serif mt-1">Resumate - The Resume Builder</h1>
                     </Link>
 
                     <div class="flex flex-wrap justify-center mt-6 -mx-4">
