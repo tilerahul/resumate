@@ -3,6 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { useAuth } from '../../Reducers/Authentication/AuthContext';
 import toast from 'react-hot-toast';
+import { FaUser } from "react-icons/fa";
+import { RiLogoutBoxRFill } from "react-icons/ri";
 
 function Navbar() {
   const { state, logout } = useAuth();
@@ -89,7 +91,7 @@ function Navbar() {
               </svg>
             </button>
           </div>
-          <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:flex lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
+          <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
             <li><NavLink to="/" className="text-sm text-gray-400 hover:text-gray-500">Home</NavLink></li>
             <li className="text-gray-300">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
@@ -139,8 +141,14 @@ function Navbar() {
               dropDown && <div className='absolute top-9 left-6'>
                 <div className='w-[20px] h-[20px] bg-slate-100 rounded-md absolute -top-2 rotate-45 right-[82px]'></div>
                 <div className='w-[200px] h-[80px] bg-slate-100 rounded-md flex flex-col justify-center p-5 gap-2'>
-                  <Link to="/profile">Your Profile</Link>
-                  <p onClick={logoutHandler} className='cursor-pointer'>Logout</p>
+                  <div className='flex items-center gap-2'>
+                    <FaUser />
+                    <Link to="/profile"> Your Profile</Link>
+                  </div>
+                  <div className="flex items-center gap-2">
+                  <RiLogoutBoxRFill />
+                    <p onClick={logoutHandler} className='cursor-pointer'>Logout</p>
+                  </div>
                 </div>
 
               </div>
@@ -190,7 +198,7 @@ function Navbar() {
             </div>
             <div className="mt-auto">
               {state.isAuthenticated && <div className="pt-6">
-                <Link to="/login" className="block px-4 py-3 mb-3 leading-loose text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl text-decoration-none">Sign in</Link>
+                <Link to="/login" className="block px-4 py-3 mb-3 text-xs text-center font-semibold leading-none bg-gray-50 hover:bg-gray-100 rounded-xl text-decoration-none">Sign in</Link>
                 <Link to="/CreateAccount" className="block px-4 py-3 mb-2 leading-loose text-xs text-center text-white font-semibold bg-blue-600 hover:bg-blue-700  rounded-xl text-decoration-none">Sign Up</Link>
               </div>}
             </div>

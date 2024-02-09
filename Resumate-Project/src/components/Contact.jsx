@@ -14,18 +14,17 @@ function Contact() {
   });
 
   useEffect(()=>{
-    if(!state.isAuthenticated){
-      toast.error('Please login first');
-      navigate('/login');
-    }else{
+    if(state.isAuthenticated){
       setData({
         firstName : state.user.firstName,
         lastName : state.user.lastName,
         email : state.user.email
       })
-    }
-    
-  }, [data])
+    }else{
+      toast.error('Please login first');
+      navigate('/login');
+    }    
+  }, [state])
   return (
     <>
       <section className="bg-gray-50 dark:bg-gray-900 pt-14">
