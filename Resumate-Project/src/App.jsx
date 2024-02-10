@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import Profile from './components/Profile';
 import Footer from './components/Footer';
 import About from './components/about/About';
+import FAQ from './components/FAQ/FAQ';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
+          <Route path="/faq" element={<FAQ />} />
         </Routes>
         <Footer/>
       </Router>
