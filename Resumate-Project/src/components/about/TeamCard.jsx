@@ -11,9 +11,9 @@ const TeamCard = ({ img, name, position, college, github, linkedin }) => {
                     <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{position}</span>
                     <p className="m-1 text-sm text-center text-gray-500 dark:text-gray-400">{college}</p>
                     <div className="flex mt-4 md:mt-6 gap-4">
-                        <Link to='/'><FaLinkedin/></Link>
-                        <Link to='/'><FaGithub/></Link>
-                        <Link to='/'><FaInstagram/></Link>
+                        <Link to={linkedin} className="hover:scale-125"><FaLinkedin/></Link>
+                        <Link to={github} className="hover:scale-125"><FaGithub/></Link>
+                        <Link to='/' className="hover:scale-125"><FaInstagram/></Link>
                     </div>
                 </div>
             </div>
