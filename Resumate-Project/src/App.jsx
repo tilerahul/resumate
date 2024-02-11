@@ -1,15 +1,15 @@
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
-import Home from './components/Home'
-import Navbar from './components/Navbar';
+import Home from './components/Layout/Home';
+import Navbar from './components/Layout/Navbar';
 import CreateAccount from './components/CreateAccount';
 import Login from './components/Login';
 import Contact from './components/Contact';
 import Profile from './components/Profile';
-import Footer from './components/Footer';
+import Footer from './components/Layout/Footer';
 import About from './components/about/About';
-import FAQ from './components/FAQ/FAQ';
+import Faq from './components/faq/Faq';
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
-          <Route path="/faq" element={<FAQ />} />
+          <Route path="/faq" element={<Faq />} />
         </Routes>
         <Footer/>
       </Router>

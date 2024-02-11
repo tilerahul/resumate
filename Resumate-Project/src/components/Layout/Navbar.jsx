@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
-import { useAuth } from '../../Reducers/Authentication/AuthContext';
+import { useAuth } from '../../../Reducers/Authentication/AuthContext';
 import toast from 'react-hot-toast';
 import { FaUser } from "react-icons/fa";
 import { RiLogoutBoxRFill } from "react-icons/ri";
@@ -110,15 +110,7 @@ function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
             </li>
-            <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="services">Services</NavLink></li>
-            <li className="text-gray-300">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
-              </svg>
-            </li>
-
             <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="/blog">Blog</NavLink></li>
-
             <li className="text-gray-300">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
@@ -146,7 +138,7 @@ function Navbar() {
                     <Link to="/profile"> Your Profile</Link>
                   </div>
                   <div className="flex items-center gap-2">
-                  <RiLogoutBoxRFill />
+                    <RiLogoutBoxRFill />
                     <p onClick={logoutHandler} className='cursor-pointer'>Logout</p>
                   </div>
                 </div>
@@ -186,10 +178,6 @@ function Navbar() {
                 <li className="mb-1">
                   <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/blog">Blog</Link>
 
-                  <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="/services">Services</Link>
-                </li>
-                <li className="mb-1">
-                  <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="pricing">Pricing</Link>
                 </li>
                 <li className="mb-1">
                   <Link className="block p-4 text-sm font-semibold text-gray-400 hover:bg-blue-50 hover:text-blue-600 rounded" to="contact">Contact</Link>

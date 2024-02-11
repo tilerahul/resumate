@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import Hero from './Hero';
-import Templates from './Templates';
-import Feature from './feature';
+import Hero from '../Hero';
+import Templates from '../Templates';
+import Feature from '../feature';
 function Home() {
   return (
     <>
