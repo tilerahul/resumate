@@ -123,7 +123,7 @@ function Navbar() {
             <Link to="/CreateAccount" className="hidden lg:inline-block py-2 px-6 bg-blue-500 hover:bg-blue-600 text-sm text-white font-bold rounded-xl transition duration-200 text-decoration-none">Sign up</Link>
           </div>}
 
-          {state.isAuthenticated && <div className='flex items-center gap-2 font-medium relative'>
+          {state.isAuthenticated && <div className=' flex items-center gap-2 font-medium relative'>
             <p>{`${state.user.firstName} ${state.user.lastName}`}</p>
             <img src={state.user.imgUrl} className='rounded-full w-[35px]' alt="img" />
             {dropDown ? (<IoMdArrowDropup onClick={() => { setDropDown(!dropDown) }} />) :
