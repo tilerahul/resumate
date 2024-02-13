@@ -1,4 +1,3 @@
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css'
 import Home from './components/Layout/Home';
@@ -10,6 +9,8 @@ import Profile from './components/Profile';
 import Footer from './components/Layout/Footer';
 import About from './components/about/About';
 import Faq from './components/faq/Faq';
+import Resume from './components/Resume/Resume';
+
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faq />} />
+          <Route path="/resume" element={<Resume />} />
         </Routes>
         <Footer/>
       </Router>
