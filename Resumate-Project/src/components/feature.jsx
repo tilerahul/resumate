@@ -77,44 +77,47 @@ function Feature() {
                 </div>
             </section>
 
-            <div class="flex flex-col items-center justify-center h-screen bg-cover bg-no-repeat" style="background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/city/018.jpg');">
-  <div class="flex flex-col items-center justify-center p-10 bg-white bg-opacity-80 rounded-lg shadow-lg">
-    <h1 class="text-4xl font-bold text-gray-800">Why Use The Novorésumé Resume Builder?</h1>
-    <div class="flex flex-wrap justify-center mt-8">
-      <div class="flex flex-col items-center p-4 m-2 bg-blue-100 rounded-lg">
-        <div class="w-16 h-16 p-2 bg-blue-200 rounded-full">
+            <div className="flex flex-col items-center justify-center h-screen bg-cover bg-no-repeat" 
+            style={{backgroundImage: "url('https://mdbcdn.b-cdn.net/img/new/fluid/city/018.jpg');" }}
+            >
+            {/* style="background-image: url('https://mdbcdn.b-cdn.net/img/new/fluid/city/018.jpg');" */}
+  <div className="flex flex-col items-center justify-center p-10 bg-white bg-opacity-80 rounded-lg shadow-lg">
+    <h1 className="text-4xl font-bold text-gray-800">Why Use The Novorésumé Resume Builder?</h1>
+    <div className="flex flex-wrap justify-center mt-8">
+      <div className="flex flex-col items-center p-4 m-2 bg-blue-100 rounded-lg">
+        <div className="w-16 h-16 p-2 bg-blue-200 rounded-full">
           <img src="star.svg" alt="star icon"/>
         </div>
-        <h2 class="mt-2 text-xl font-semibold text-blue-800">Free AND Premium</h2>
-        <p class="mt-2 text-sm text-blue-600">We offer both free and premium features. Want your resume to have that extra punch? Upgrade to Premium. On a budget? That's OK too - you can use our resume builder completely free of charge.</p>
+        <h2 className="mt-2 text-xl font-semibold text-blue-800">Free AND Premium</h2>
+        <p className="mt-2 text-sm text-blue-600">We offer both free and premium features. Want your resume to have that extra punch? Upgrade to Premium. On a budget? That's OK too - you can use our resume builder completely free of charge.</p>
       </div>
-      <div class="flex flex-col items-center p-4 m-2 bg-green-100 rounded-lg">
-        <div class="w-16 h-16 p-2 bg-green-200 rounded-full">
+      <div className="flex flex-col items-center p-4 m-2 bg-green-100 rounded-lg">
+        <div className="w-16 h-16 p-2 bg-green-200 rounded-full">
           <img src="money-bag.svg" alt="money bag icon"/>
         </div>
-        <h2 class="mt-2 text-xl font-semibold text-green-800">NO Hidden Fees</h2>
-        <p class="mt-2 text-sm text-green-600">With Novorésumé, you won't spend hours working on your resume, just to be hit with a hidden paywall. Our resume builder will notify you if you're using any of our premium features in advance.</p>
+        <h2 className="mt-2 text-xl font-semibold text-green-800">NO Hidden Fees</h2>
+        <p className="mt-2 text-sm text-green-600">With Novorésumé, you won't spend hours working on your resume, just to be hit with a hidden paywall. Our resume builder will notify you if you're using any of our premium features in advance.</p>
       </div>
-      <div class="flex flex-col items-center p-4 m-2 bg-red-100 rounded-lg">
-        <div class="w-16 h-16 p-2 bg-red-200 rounded-full">
+      <div className="flex flex-col items-center p-4 m-2 bg-red-100 rounded-lg">
+        <div className="w-16 h-16 p-2 bg-red-200 rounded-full">
           <img src="heart.svg" alt="heart icon"/>
         </div>
-        <h2 class="mt-2 text-xl font-semibold text-red-800">Live Content Feedback</h2>
-        <p class="mt-2 text-sm text-red-600">Our CV builder provides real-time feedback on your resume content, ensuring that your resume reaches its full potential.</p>
+        <h2 className="mt-2 text-xl font-semibold text-red-800">Live Content Feedback</h2>
+        <p className="mt-2 text-sm text-red-600">Our CV builder provides real-time feedback on your resume content, ensuring that your resume reaches its full potential.</p>
       </div>
-      <div class="flex flex-col items-center p-4 m-2 bg-teal-100 rounded-lg">
-        <div class="w-16 h-16 p-2 bg-teal-200 rounded-full">
+      <div className="flex flex-col items-center p-4 m-2 bg-teal-100 rounded-lg">
+        <div className="w-16 h-16 p-2 bg-teal-200 rounded-full">
           <img src="document.svg" alt="document icon"/>
         </div>
-        <h2 class="mt-2 text-xl font-semibold text-teal-800">Creative and Professional Resume Templates</h2>
-        <p class="mt-2 text-sm text-teal-600">Whatever resume template you're looking for, we've got it! Whether it's a classic black-and-white template or something a bit more outside the box, we have what you need!</p>
+        <h2 className="mt-2 text-xl font-semibold text-teal-800">Creative and Professional Resume Templates</h2>
+        <p className="mt-2 text-sm text-teal-600">Whatever resume template you're looking for, we've got it! Whether it's a classNameic black-and-white template or something a bit more outside the box, we have what you need!</p>
       </div>
-      <div class="flex flex-col items-center p-4 m-2 bg-teal-100 rounded-lg">
-        <div class="w-16 h-16 p-2 bg-teal-200 rounded-full">
+      <div className="flex flex-col items-center p-4 m-2 bg-teal-100 rounded-lg">
+        <div className="w-16 h-16 p-2 bg-teal-200 rounded-full">
           <img src="monitor.svg" alt="monitor icon"/>
         </div>
-        <h2 class="mt-2 text-xl font-semibold text-teal-800">Edit Your Resume in Real Time</h2>
-        <p class="mt-2 text-sm text-teal-600">As you edit your resume with our builder, you'll immediately see the changes applied to your document.</p>
+        <h2 className="mt-2 text-xl font-semibold text-teal-800">Edit Your Resume in Real Time</h2>
+        <p className="mt-2 text-sm text-teal-600">As you edit your resume with our builder, you'll immediately see the changes applied to your document.</p>
       </div>
     </div>
   </div>

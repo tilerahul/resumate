@@ -10,6 +10,7 @@ import Footer from './components/Layout/Footer';
 import About from './components/about/About';
 import Faq from './components/faq/Faq';
 import Resume from './components/Resume/Resume';
+import Project from './components/Resume/Section/Project';
 
 
 function App() {
@@ -25,6 +26,9 @@ function App() {
           <Route path="/about" element={<About />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/resume/project" element={<Project />} />
+          
+          
         </Routes>
         <Footer/>
       </Router>
