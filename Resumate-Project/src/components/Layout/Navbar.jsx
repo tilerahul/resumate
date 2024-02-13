@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink,useNavigate } from 'react-router-dom';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { useAuth } from '../../../Reducers/Authentication/AuthContext';
 import toast from 'react-hot-toast';
@@ -9,6 +9,7 @@ import { RiLogoutBoxRFill } from "react-icons/ri";
 function Navbar() {
   const { state, logout } = useAuth();
   const [dropDown, setDropDown] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     setDropDown(false);
@@ -16,7 +17,9 @@ function Navbar() {
 
   const logoutHandler = () => {
     logout();
-    toast.success("Successfully Logout")
+    toast.success("Successfully Logout");
+    navigate('/');
+
   }
   useEffect(() => {
     const burger = document.querySelectorAll('.navbar-burger');
