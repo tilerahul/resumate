@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import SaveButton from '../Button/SaveButton';
 import NextButton from '../Button/NextButton';
+import toast from "react-hot-toast";
 
-const Achievement = () => {
+const Achievement = ({setResumeData}) => {
   const [achievement, setAchievement] = useState({
     title : '',
     description : ''
@@ -16,7 +17,11 @@ const Achievement = () => {
   }
   const submitHandler = (e) =>{
     e.preventDefault();
-    console.log(achievement);
+    setResumeData((prev)=>({
+      ...prev, 
+      Achievement : [...prev.Achievement,achievement]
+    }))
+    toast.success("Data save Successfully");
   }
 
   return (

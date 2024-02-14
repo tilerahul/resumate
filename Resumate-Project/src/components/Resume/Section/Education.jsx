@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import SaveButton from '../Button/SaveButton';
 import NextButton from '../Button/NextButton';
+import toast from "react-hot-toast";
 
-const Education = () => {
+const Education = ({setResumeData}) => {
   const [education, setEducation] = useState({
     college : '',
     degree : '',
@@ -19,7 +20,11 @@ const Education = () => {
   }
   const submitHandler = (e) =>{
     e.preventDefault();
-    console.log(education);
+    setResumeData((prev)=>({
+      ...prev, 
+      Education : [...prev.Education,education]
+    }))
+    toast.success("Data save Successfully");
   }
 
   return (

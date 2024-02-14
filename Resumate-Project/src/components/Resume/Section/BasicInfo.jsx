@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import SaveButton from '../Button/SaveButton';
 import NextButton from '../Button/NextButton';
+import toast from "react-hot-toast";
 
-const BasicInfo = () => {
+const BasicInfo = ({setResumeData}) => {
   const [basicInfo, setBasicInfo] = useState({
     firstName : '',
     lastName : '',
@@ -22,7 +23,11 @@ const BasicInfo = () => {
   }
   const submitHandler = (e) =>{
     e.preventDefault();
-    console.log(basicInfo);
+    setResumeData((prev)=>({
+      ...prev, 
+      BasicInfo : basicInfo
+    }))
+    toast.success("Data save Successfully");
   }
 
   return (

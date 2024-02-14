@@ -1,8 +1,9 @@
 import React, {useState} from 'react'
 import SaveButton from '../Button/SaveButton';
 import NextButton from '../Button/NextButton';
+import toast from "react-hot-toast";
 
-const Certification = () => {
+const Certification = ({setResumeData}) => {
   const [certification, setCertification] = useState({
     title : '',
     description : ''
@@ -16,7 +17,11 @@ const Certification = () => {
   }
   const submitHandler = (e) =>{
     e.preventDefault();
-    console.log(certification);
+    setResumeData((prev)=>({
+      ...prev, 
+      Certification : [...prev.Certification,certification]
+    }));    
+    toast.success("Data save Successfully");
   }
   return (
     <div>

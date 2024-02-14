@@ -1,12 +1,37 @@
-import React from 'react'
+import React, {useState} from 'react'
 import SaveButton from '../Button/SaveButton';
 import NextButton from '../Button/NextButton';
+import toast from "react-hot-toast";
 
-const WorkExperience = () => {
+const WorkExperience = ({setResumeData}) => {
+
+  const [experienceData, setExperienceData] = useState({
+    cName : '',
+    jobTitle : '',
+    startDate : '',
+    completionDate : '',
+    description : ''
+  })
+
+  const changeHandler = (e) =>{
+    setExperienceData({
+      ...experienceData,
+      [e.target.name] : e.target.value,
+    })
+  }
+  const submitHandler = (e) =>{
+    e.preventDefault();
+    setResumeData((prev)=>({
+      ...prev, 
+      WorkExperience : [...prev.WorkExperience,experienceData]
+    }))
+    toast.success("Data save Successfully");
+  }
+
   return (
     <div>
       <h3 className="font-bold py-3 text-xl">Work Experience</h3>
-      <form className="space-y-4 md:space-y-6">
+      <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
         <div>
           <label
             htmlFor="cName"
@@ -19,6 +44,8 @@ const WorkExperience = () => {
               type="text"
               name="cName"
               id="cName"
+              value={experienceData.cName}
+              onChange={changeHandler}
               placeholder="Company Name"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
@@ -36,6 +63,8 @@ const WorkExperience = () => {
               type="text"
               name="jobTitle"
               id="jobTitle"
+              value={experienceData.jobTitle}
+              onChange={changeHandler}
               placeholder="Job Title"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
@@ -53,6 +82,8 @@ const WorkExperience = () => {
               type="date"
               name="startDate"
               id="startDate"
+              value={experienceData.startDate}
+              onChange={changeHandler}
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             
             />
@@ -69,6 +100,8 @@ const WorkExperience = () => {
                 type="date"
                 name="completionDate"
                 id="completionDate"
+                value={experienceData.completionDate}
+                onChange={changeHandler}
                 placeholder="Enter Your Last Name"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
@@ -88,6 +121,8 @@ const WorkExperience = () => {
               type="text"
               name="description"
               id="description"
+              value={experienceData.description}
+              onChange={changeHandler}
               placeholder="Enter Your Description"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
