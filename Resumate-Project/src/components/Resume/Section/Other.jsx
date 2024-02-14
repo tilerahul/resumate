@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import SaveButton from '../Button/SaveButton'
 import toast from "react-hot-toast";
+import { IoAddCircleSharp } from "react-icons/io5";
 
 const Other = ({resumeData, setResumeData}) => {
   const [otherData, setOtherData] = useState({
@@ -22,9 +23,17 @@ const Other = ({resumeData, setResumeData}) => {
     }))
     toast.success("Data save Successfully");
   }
+
+  const addFields = () =>{
+    
+  }
+
   return (
     <div>
-      <h3 className="font-bold py-3 text-xl">Other Information</h3>
+      <div className='flex items-center justify-between'>
+        <h3 className="font-bold py-3 text-xl">Others</h3>
+        <IoAddCircleSharp onClick={addFields} size={25} className='mx-3 cursor-pointer' />
+      </div>
       <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
         <div>
           <label

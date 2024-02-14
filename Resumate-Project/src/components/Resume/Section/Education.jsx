@@ -1,35 +1,42 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import SaveButton from '../Button/SaveButton';
 import NextButton from '../Button/NextButton';
 import toast from "react-hot-toast";
+import { IoAddCircleSharp } from "react-icons/io5";
 
-const Education = ({setResumeData}) => {
+const Education = ({ setResumeData }) => {
   const [education, setEducation] = useState({
-    college : '',
-    degree : '',
-    CGPA : '',
-    completionDate : '',
-    description : ''
+    college: '',
+    degree: '',
+    CGPA: '',
+    completionDate: '',
+    description: ''
   })
 
-  const changeHandler = (e) =>{
+  const changeHandler = (e) => {
     setEducation({
       ...education,
-      [e.target.name] : e.target.value,
+      [e.target.name]: e.target.value,
     })
   }
-  const submitHandler = (e) =>{
+  const submitHandler = (e) => {
     e.preventDefault();
-    setResumeData((prev)=>({
-      ...prev, 
-      Education : [...prev.Education,education]
+    setResumeData((prev) => ({
+      ...prev,
+      Education: [...prev.Education, education]
     }))
     toast.success("Data save Successfully");
+  }
+  const addFields = () =>{
+    
   }
 
   return (
     <div>
-      <h3 className="font-bold py-3 text-xl">Education</h3>
+      <div className='flex items-center justify-between'>
+        <h3 className="font-bold py-3 text-xl">Education</h3>
+        <IoAddCircleSharp onClick={addFields} size={25} className='mx-3 cursor-pointer' />
+      </div>
       <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
         <div>
           <label
@@ -128,8 +135,8 @@ const Education = ({setResumeData}) => {
           </div>
         </div>
         <div className='flex gap-2 w-full justify-end'>
-          <SaveButton/>
-          <NextButton/>
+          <SaveButton />
+          <NextButton />
         </div>
       </form>
     </div>
