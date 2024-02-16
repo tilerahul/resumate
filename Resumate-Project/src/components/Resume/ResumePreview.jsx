@@ -4,7 +4,7 @@ const ResumePreview = ({resumeData}) => {
     const {BasicInfo, Education} = resumeData;
   return (
     <>
-        <div className="bg-slate-100 shadow-lg rounded-lg p-6 inline-block mr-4">
+        <div className="bg-slate-100 shadow-lg rounded-lg p-6 inline-block mr-4 border">
         <div className="mb-4">
         <h1 className="text-2xl font-semibold">DENVER DAHL</h1>
         <p className="font-bold text-blue-700 text-xl">Account Manager</p>
@@ -16,7 +16,21 @@ const ResumePreview = ({resumeData}) => {
         
     </div>
     <div className="mb-6">
-        <h2 className="text-lg font-semibold">EXPERIENCE</h2>
+        <h2 className="text-lg font-semibold">EDUCATION</h2>
+        <div className="border-t-2 border-black"></div>
+        <p className="text-gray-600">Master of Marketing Management [MMM]</p>
+        <p className="text-gray-600">La Trobe University - San Francisco, CA</p>
+    </div>
+
+    <div className="mb-6">
+        <h2 className="text-lg font-semibold">SKILLS</h2>
+        <div className="border-t-2 border-black"></div>
+        <p className="text-gray-600">MS Office Programs, Windows & Mac OSX, Asana, Salesforce, Agile CRM Systems, Hubspot, LinkedIn Sales Navigator, Dun & Bradstreet</p>
+    </div>
+
+
+    <div className="mb-6">
+        <h2 className="text-lg font-semibold">WORK EXPERIENCE</h2>
         <div className="border-t-2 border-black"></div>
         <div className="mb-4">
             <p className="text-gray-600 font-medium">Key Account Manager</p>
@@ -43,12 +57,16 @@ const ResumePreview = ({resumeData}) => {
             </ul>
         </div>
     </div>
+
     <div className="mb-6">
-        <h2 className="text-lg font-semibold">EDUCATION</h2>
+        <h2 className="text-lg font-semibold">PROJECTS</h2>
         <div className="border-t-2 border-black"></div>
-        <p className="text-gray-600">Master of Marketing Management [MMM]</p>
-        <p className="text-gray-600">La Trobe University - San Francisco, CA</p>
+        <p className="text-gray-600">project name</p>
+        <p className="text-gray-600">Project dates</p>
+        <p className="text-gray-600">Description</p>
     </div>
+    
+
     <div className="mb-6">
         <h2 className="text-lg font-semibold">KEY ACHIEVEMENTS</h2>
         <div className="border-t-2 border-black"></div>
@@ -59,16 +77,29 @@ const ResumePreview = ({resumeData}) => {
             <li>Work-life balance: In charge of spending weekends in nature with family off-site.</li>
         </ul>
     </div>
+
     <div className="mb-6">
-        <h2 className="text-lg font-semibold">SKILLS</h2>
+        <h2 className="text-lg font-semibold">CERTIFICATIONS</h2>
         <div className="border-t-2 border-black"></div>
-        <p className="text-gray-600">MS Office Programs, Windows & Mac OSX, Asana, Salesforce, Agile CRM Systems, Hubspot, LinkedIn Sales Navigator, Dun & Bradstreet</p>
+        <ul className="list-disc list-inside text-gray-600">
+            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, alias.</li>
+            <li>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non, delectus.</li>
+        </ul>
     </div>
+    
     <div>
         <h2 className="text-lg font-semibold">LANGUAGES</h2>
         <div className="border-t-2 border-black"></div>
         <p className="text-gray-600">English (Native), German (Proficient), Greek (Advanced)</p>
     </div>
+
+    <div className="mt-6">
+        <h2 className="text-lg font-semibold">OTHER</h2>
+        <div className="border-t-2 border-black"></div>
+        <p className="text-gray-600">TITLE -</p>
+        <p className="text-gray-600">DESCRIPTION- Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    </div>
+
         </div>
     </>
   )
