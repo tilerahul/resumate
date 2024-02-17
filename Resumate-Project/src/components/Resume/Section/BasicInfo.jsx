@@ -1,39 +1,44 @@
-import React, { useState } from "react";
-import SaveButton from '../Button/SaveButton';
-import NextButton from '../Button/NextButton';
+import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
+import { AppContext } from "../../../Context/appContext";
 
-const BasicInfo = ({setResumeData}) => {
+const BasicInfo = ({ setResumeData }) => {
+  const { setSection } = useContext(AppContext);
   const [basicInfo, setBasicInfo] = useState({
-    firstName : '',
-    lastName : '',
-    email : '',
-    phone : '',
-    github : '',
-    linkedin : '',
-    address : '',
-    objective : ''
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    github: '',
+    linkedin: '',
+    address: '',
+    objective: ''
   })
 
-  const changeHandler = (e) =>{
+  const changeHandler = (e) => {
     setBasicInfo({
       ...basicInfo,
-      [e.target.name] : e.target.value,
+      [e.target.name]: e.target.value,
     })
   }
-  const submitHandler = (e) =>{
+  const submitHandler = (e) => {
     e.preventDefault();
-    setResumeData((prev)=>({
-      ...prev, 
-      BasicInfo : basicInfo
+    setResumeData((prev) => ({
+      ...prev,
+      BasicInfo: basicInfo
     }))
     toast.success("Data save Successfully");
+  }
+
+  const nextClick = (e) => {
+    e.preventDefault();
+    setSection('education')
   }
 
   return (
     <div>
       <h3 className="font-bold py-3 text-xl">Basic information</h3>
-      <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
+      <form className="space-y-4 md:space-y-6" >
         <div className="flex gap-2">
           <div className="w-1/2">
             <label
@@ -64,9 +69,9 @@ const BasicInfo = ({setResumeData}) => {
                 type="text"
                 name="lastName"
                 id="lastName"
-                
-              value={basicInfo.lastName}
-              onChange={changeHandler}
+
+                value={basicInfo.lastName}
+                onChange={changeHandler}
                 placeholder="Enter Your Last Name"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
@@ -86,8 +91,8 @@ const BasicInfo = ({setResumeData}) => {
                 type="text"
                 name="email"
                 id="email"
-              value={basicInfo.email}
-              onChange={changeHandler}
+                value={basicInfo.email}
+                onChange={changeHandler}
                 placeholder="Enter Your Email Id"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
@@ -193,9 +198,21 @@ const BasicInfo = ({setResumeData}) => {
             />
           </div>
         </div>
-        <div className='flex gap-2 w-full justify-end'>
-          <SaveButton/>
-          <NextButton/>
+        <div className='flex gap-2'>
+          <button
+            type="submit"
+            name='submit'
+            onClick={submitHandler}
+            className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          >
+            Save
+          </button>
+          <button
+            onClick={nextClick}
+            className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          >
+            Next
+          </button>
         </div>
       </form>
     </div>

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import {AppContext} from '../Context/appContext';
 
 function Hero() {
+  const {data} = useContext(AppContext);
   return (
     <>
       <section className="bg-white dark:bg-gray-900 w-11/12 m-auto pt-10">

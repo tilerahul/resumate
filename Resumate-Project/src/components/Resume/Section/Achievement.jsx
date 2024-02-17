@@ -1,10 +1,12 @@
-import React, {useState} from 'react'
-import SaveButton from '../Button/SaveButton';
-import NextButton from '../Button/NextButton';
+import React, {useContext, useState} from 'react'
 import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
+import { AppContext } from '../../../Context/appContext';
 
 const Achievement = ({setResumeData}) => {
+
+  const {setSection} = useContext(AppContext);
+
   const [achievement, setAchievement] = useState({
     title : '',
     description : ''
@@ -27,6 +29,11 @@ const Achievement = ({setResumeData}) => {
 
   const addFields = () =>{
     
+  }
+
+  const nextClick = (e) => {
+    e.preventDefault();
+    setSection('certification');
   }
 
   return (
@@ -75,9 +82,21 @@ const Achievement = ({setResumeData}) => {
             />
           </div>
         </div>
-        <div className='flex gap-2 w-full justify-end'>
-          <SaveButton/>
-          <NextButton />
+        <div className='flex gap-2'>
+          <button
+            type="submit"
+            name='submit'
+            onClick={submitHandler}
+            className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          >
+            Save
+          </button>
+          <button
+            onClick={nextClick}
+            className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+          >
+            Next
+          </button>
         </div>
         </form>
     </div>

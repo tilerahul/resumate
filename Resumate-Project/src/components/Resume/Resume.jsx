@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import BasicInfo from "./Section/BasicInfo";
 import Achievement from "./Section/Achievement"
 import Certification from './Section/Certification'
@@ -10,20 +10,11 @@ import Skills from './Section/Skills'
 import WorkExperience from './Section/WorkExperience'
 import { IoEyeSharp } from "react-icons/io5";
 import ResumePreview from "./ResumePreview";
+import { AppContext } from "../../Context/appContext";
 
 const Resume = () => {
-  const [section, setSection] = useState("basicInfo");
-  const [resumeData, setResumeData] = useState({
-    BasicInfo: [],
-    Education: [],
-    Skills: [],
-    WorkExperience: [],
-    Project: [],
-    Achievement: [],
-    Certification: [],
-    Languages: [],
-    Other: [],
-  })
+  const {section, setSection, resumeData, setResumeData} = useContext(AppContext);
+  
 
   const [preview, setPreview] = useState(true)
 
