@@ -11,6 +11,7 @@ import About from './components/about/About';
 import Faq from './components/faq/Faq';
 import Resume from './components/Resume/Resume';
 import Project from './components/Resume/Section/Project';
+import Feature from './components/feature';
 
 
 function App() {
@@ -27,8 +28,7 @@ function App() {
           <Route path="/faq" element={<Faq />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/resume/project" element={<Project />} />
-          
-          
+          <Route path="/featurepath" element={<Feature />} />
         </Routes>
         <Footer/>
       </Router>

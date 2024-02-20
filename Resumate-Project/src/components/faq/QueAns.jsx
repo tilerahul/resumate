@@ -39,41 +39,6 @@ const QueAns = [
         question : 'How frequently are templates and features updated on your platform?',
         answer : 'We regularly update our platform with new templates, features, and enhancements to ensure our users have access to the latest tools and resources. Stay tuned to our blog and social media channels for announcements about updates and improvements.'
     },
-    {
-        id : 9,
-        question : '',
-        answer : ''
-    },
-    {
-        id : 10,
-        question : '',
-        answer : ''
-    },
-    {
-        id : 11,
-        question : '',
-        answer : ''
-    },
-    {
-        id : 12,
-        question : '',
-        answer : ''
-    },
-    {
-        id : 13,
-        question : '',
-        answer : ''
-    },
-    {
-        id : 14,
-        question : '',
-        answer : ''
-    },
-    {
-        id : 15,
-        question : '',
-        answer : ''
-    },
 ]
 
 export default QueAns;
