@@ -3,8 +3,8 @@ import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 
-const Skills = ({setResumeData}) => {
-  const {setSection} = useContext(AppContext);
+const Skills = () => {
+  const {setSection, setResumeData} = useContext(AppContext);
 
   const [skilsData, setSkillsData] = useState({
     skill : ''
@@ -22,9 +22,16 @@ const Skills = ({setResumeData}) => {
       Skills : [...prev.Skills,skilsData]
     }))
     toast.success("Data save Successfully");
+    setSection('workExperience');
   }
   const addFields = () =>{
-    
+    setResumeData((prev)=>({
+      ...prev, 
+      Skills : [...prev.Skills,skilsData]
+    }))
+    setSkillsData({
+      skill : ''
+    })
   }
   const nextClick = (e) =>{
     e.preventDefault();

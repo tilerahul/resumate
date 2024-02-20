@@ -1,13 +1,9 @@
 import React from 'react'
 
-function Preview() {
-    return (
-        <>
-        
-
-
-        </>
-    )
+const Preview = () => {
+  return (
+    <div>Preview</div>
+  )
 }
 
 export default Preview

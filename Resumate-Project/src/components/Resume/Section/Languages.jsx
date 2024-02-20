@@ -3,9 +3,9 @@ import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 
-const Languages = ({setResumeData}) => {
+const Languages = () => {
 
-  const {setSection} = useContext(AppContext);
+  const {setSection, setResumeData} = useContext(AppContext);
   const [languages, setLanguages] = useState({
     language : ''
   })
@@ -22,10 +22,17 @@ const Languages = ({setResumeData}) => {
       Languages : [...prev.Languages,languages]
     }))
     toast.success("Data save Successfully");
+    setSection('other');
   }
 
   const addFields = () =>{
-    
+    setResumeData((prev)=>({
+      ...prev, 
+      Languages : [...prev.Languages,languages]
+    }))
+    setLanguages({
+      language : ''
+    })
   }
 
   const nextClick = (e) => {

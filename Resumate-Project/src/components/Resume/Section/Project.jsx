@@ -1,39 +1,49 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 
-const Project = ({setResumeData}) => {
+const Project = () => {
 
-  const {setSection} = useContext(AppContext);
+  const { setSection, setResumeData } = useContext(AppContext);
 
   const [projectData, setProjectData] = useState({
-    projectName : '',
-    startDate : '',
-    completionDate : '',
-    description : ''
+    projectName: '',
+    startDate: '',
+    completionDate: '',
+    description: ''
   })
 
-  const changeHandler = (e) =>{
+  const changeHandler = (e) => {
     setProjectData({
       ...projectData,
-      [e.target.name] : e.target.value,
+      [e.target.name]: e.target.value,
     })
   }
-  const submitHandler = (e) =>{
+  const submitHandler = (e) => {
     e.preventDefault();
-    setResumeData((prev)=>({
-      ...prev, 
-      Project : [...prev.Project,projectData]
+    setResumeData((prev) => ({
+      ...prev,
+      Project: [...prev.Project, projectData]
     }))
     toast.success("Data save Successfully");
+    setSection('achievement');
   }
 
-  const addFields = () =>{
-    
+  const addFields = () => {
+    setResumeData((prev) => ({
+      ...prev,
+      Project: [...prev.Project, projectData]
+    }))
+    setProjectData({
+      projectName: '',
+      startDate: '',
+      completionDate: '',
+      description: ''
+    })
   }
 
-  const nextClick = (e) =>{
+  const nextClick = (e) => {
     e.preventDefault();
     setSection('achievement');
   }
@@ -79,7 +89,7 @@ const Project = ({setResumeData}) => {
               value={projectData.startDate}
               onChange={changeHandler}
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            
+
             />
           </div>
           <div className="w-1/2">

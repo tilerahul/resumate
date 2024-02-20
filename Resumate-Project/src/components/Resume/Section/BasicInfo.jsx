@@ -2,11 +2,12 @@ import React, { useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { AppContext } from "../../../Context/appContext";
 
-const BasicInfo = ({ setResumeData }) => {
-  const { setSection } = useContext(AppContext);
+const BasicInfo = () => {
+  const { setSection, setResumeData } = useContext(AppContext);
   const [basicInfo, setBasicInfo] = useState({
     firstName: '',
     lastName: '',
+    jobTitle : '',
     email: '',
     phone: '',
     github: '',
@@ -28,11 +29,12 @@ const BasicInfo = ({ setResumeData }) => {
       BasicInfo: basicInfo
     }))
     toast.success("Data save Successfully");
+    setSection('education');
   }
 
   const nextClick = (e) => {
     e.preventDefault();
-    setSection('education')
+    setSection('education');
   }
 
   return (
@@ -78,6 +80,25 @@ const BasicInfo = ({ setResumeData }) => {
             </div>
           </div>
         </div>
+        <div>
+          <label
+            htmlFor="jobTitle"
+            className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Job Title
+          </label>
+          <div className="flex items-center">
+            <input
+              type="text"
+              name="jobTitle"
+              id="jobTitle"
+              value={basicInfo.jobTitle}
+              onChange={changeHandler}
+              placeholder="Eg. Full Stack Developer"
+              className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
         <div className="flex gap-2">
           <div className="w-1/2">
             <label
@@ -93,7 +114,7 @@ const BasicInfo = ({ setResumeData }) => {
                 id="email"
                 value={basicInfo.email}
                 onChange={changeHandler}
-                placeholder="Enter Your Email Id"
+                placeholder="Eg, yourname@gmail.com"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -112,7 +133,7 @@ const BasicInfo = ({ setResumeData }) => {
                 id="phone"
                 value={basicInfo.phone}
                 onChange={changeHandler}
-                placeholder="Enter Your Phone number"
+                placeholder="9876543210"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>
@@ -193,7 +214,7 @@ const BasicInfo = ({ setResumeData }) => {
               id="objective"
               value={basicInfo.objective}
               onChange={changeHandler}
-              placeholder="Enter Your Objective number"
+              placeholder="Enter Your Objective"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>

@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef } from "react";
 import BasicInfo from "./Section/BasicInfo";
 import Achievement from "./Section/Achievement"
 import Certification from './Section/Certification'
@@ -8,15 +8,11 @@ import Other from './Section/Other'
 import Project from './Section/Project'
 import Skills from './Section/Skills'
 import WorkExperience from './Section/WorkExperience'
-import { IoEyeSharp } from "react-icons/io5";
 import ResumePreview from "./ResumePreview";
 import { AppContext } from "../../Context/appContext";
 
 const Resume = () => {
-  const {section, setSection, resumeData, setResumeData} = useContext(AppContext);
-  
-
-  const [preview, setPreview] = useState(true)
+  const { section, setSection } = useContext(AppContext);
 
   return (
     <>
@@ -37,42 +33,36 @@ const Resume = () => {
         <div className="ml-48 w-2/5">
           <div className="pt-10">
             {
-              section === 'basicInfo' && <BasicInfo setResumeData={setResumeData} />
+              section === 'basicInfo' && <BasicInfo />
             }
             {
-              section === 'achievement' && <Achievement resumeData={resumeData} setResumeData={setResumeData} />
+              section === 'achievement' && <Achievement />
             }
             {
-              section === 'workExperience' && <WorkExperience setResumeData={setResumeData} />
+              section === 'workExperience' && <WorkExperience />
             }
             {
-              section === 'education' && <Education setResumeData={setResumeData} />
+              section === 'education' && <Education />
             }
             {
-              section === 'certification' && <Certification setResumeData={setResumeData} />
+              section === 'certification' && <Certification />
             }
             {
-              section === 'languages' && <Languages setResumeData={setResumeData} />
+              section === 'languages' && <Languages />
             }
             {
-              section === 'other' && <Other resumeData={resumeData} setResumeData={setResumeData} />
+              section === 'other' && <Other />
             }
             {
-              section === 'project' && <Project setResumeData={setResumeData} />
+              section === 'project' && <Project />
             }
             {
-              section === 'skills' && <Skills setResumeData={setResumeData} />
+              section === 'skills' && <Skills />
             }
           </div>
         </div>
         <div className="pt-16">
-          {
-            preview ? 
-            <>
-              <ResumePreview resumeData={resumeData}/>
-            </>
-             : <IoEyeSharp />
-          }
+          <ResumePreview/>
         </div>
       </div>
     </>

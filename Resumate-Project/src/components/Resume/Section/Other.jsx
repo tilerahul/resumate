@@ -1,8 +1,10 @@
-import React, {useState} from 'react'
+import React, {useContext, useState} from 'react'
 import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
+import { AppContext } from '../../../Context/appContext';
 
-const Other = ({resumeData, setResumeData}) => {
+const Other = () => {
+  const {setResumeData} = useContext(AppContext)
   const [otherData, setOtherData] = useState({
     title : '',
     description : ''
@@ -24,7 +26,14 @@ const Other = ({resumeData, setResumeData}) => {
   }
 
   const addFields = () =>{
-    
+    setResumeData((prev)=>({
+      ...prev, 
+      Other : [...prev.Other,otherData]
+    }))
+    setOtherData({
+      title : '',
+      description : ''
+    })
   }
 
   return (
@@ -48,7 +57,7 @@ const Other = ({resumeData, setResumeData}) => {
               id="title"
               value={otherData.title}
               onChange={changeHandler}
-              placeholder="title"
+              placeholder="Enter Section Title"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>

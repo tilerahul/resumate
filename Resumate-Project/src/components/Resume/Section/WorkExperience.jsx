@@ -1,39 +1,50 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 
-const WorkExperience = ({setResumeData}) => {
-  const {setSection} = useContext(AppContext);
+const WorkExperience = () => {
+  const { setSection, setResumeData } = useContext(AppContext);
 
   const [experienceData, setExperienceData] = useState({
-    cName : '',
-    jobTitle : '',
-    startDate : '',
-    completionDate : '',
-    description : ''
+    cName: '',
+    jobTitle: '',
+    startDate: '',
+    completionDate: '',
+    description: ''
   })
 
-  const changeHandler = (e) =>{
+  const changeHandler = (e) => {
     setExperienceData({
       ...experienceData,
-      [e.target.name] : e.target.value,
+      [e.target.name]: e.target.value,
     })
   }
-  const submitHandler = (e) =>{
+  const submitHandler = (e) => {
     e.preventDefault();
-    setResumeData((prev)=>({
-      ...prev, 
-      WorkExperience : [...prev.WorkExperience,experienceData]
+    setResumeData((prev) => ({
+      ...prev,
+      WorkExperience: [...prev.WorkExperience, experienceData]
     }))
     toast.success("Data save Successfully");
+    setSection('project');
   }
 
-  const addFields = () =>{
-    
+  const addFields = () => {
+    setResumeData((prev) => ({
+      ...prev,
+      WorkExperience: [...prev.WorkExperience, experienceData]
+    }))
+    setExperienceData({
+      cName: '',
+      jobTitle: '',
+      startDate: '',
+      completionDate: '',
+      description: ''
+    })
   }
 
-  const nextClick = (e) =>{
+  const nextClick = (e) => {
     e.preventDefault();
     setSection('project');
   }
@@ -78,7 +89,7 @@ const WorkExperience = ({setResumeData}) => {
               id="jobTitle"
               value={experienceData.jobTitle}
               onChange={changeHandler}
-              placeholder="Job Title"
+              placeholder="Eg. Web Developer"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
           </div>
@@ -98,7 +109,7 @@ const WorkExperience = ({setResumeData}) => {
               value={experienceData.startDate}
               onChange={changeHandler}
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            
+
             />
           </div>
           <div className="w-1/2">
@@ -115,7 +126,6 @@ const WorkExperience = ({setResumeData}) => {
                 id="completionDate"
                 value={experienceData.completionDate}
                 onChange={changeHandler}
-                placeholder="Enter Your Last Name"
                 className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               />
             </div>

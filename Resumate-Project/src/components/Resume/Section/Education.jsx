@@ -3,8 +3,8 @@ import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 
-const Education = ({ setResumeData }) => {
-  const {setSection} = useContext(AppContext)
+const Education = () => {
+  const { setSection, setResumeData } = useContext(AppContext)
   const [education, setEducation] = useState({
     college: '',
     degree: '',
@@ -26,11 +26,22 @@ const Education = ({ setResumeData }) => {
       Education: [...prev.Education, education]
     }))
     toast.success("Data save Successfully");
+    setSection('skills');
   }
-  const addFields = () =>{
-    
+  const addFields = () => {
+    setResumeData((prev) => ({
+      ...prev,
+      Education: [...prev.Education, education]
+    }))
+    setEducation({
+      college: '',
+      degree: '',
+      CGPA: '',
+      completionDate: '',
+      description: ''
+    })
   }
-  const nextClick = (e) =>{
+  const nextClick = (e) => {
     e.preventDefault();
     setSection('skills');
   }
