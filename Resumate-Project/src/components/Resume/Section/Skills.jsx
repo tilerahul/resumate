@@ -2,9 +2,10 @@ import React, {useContext, useState} from 'react'
 import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
+import { RxCross2 } from "react-icons/rx";
 
 const Skills = () => {
-  const {setSection, setResumeData} = useContext(AppContext);
+  const {setSection, setResumeData, resumeData} = useContext(AppContext);
 
   const [skilsData, setSkillsData] = useState({
     skill : ''
@@ -37,12 +38,35 @@ const Skills = () => {
     e.preventDefault();
     setSection('workExperience');
   }
+
+  const deleteData = (index) =>{
+    const updatedData = [...resumeData.Skills];
+    updatedData.splice(index, 1);
+    setResumeData({
+      ...resumeData,
+      Skills : updatedData
+    })
+  }
+
   return (
     <div>
       <div className='flex items-center justify-between'>
         <h3 className="font-bold py-3 text-xl">Skills</h3>
         <IoAddCircleSharp onClick={addFields} size={25} className='mx-3 cursor-pointer' />
       </div>
+      {resumeData.Skills.length > 0 &&
+        <div className='m-2 flex gap-2 flex-wrap'>
+          {
+            resumeData.Skills.map((data, index) => (
+              <div key={index} className='flex items-center gap-2 bg-slate-200 px-3 py-1 rounded-lg'>
+                <h3 className='font-medium'>{data.skill}</h3>
+                <RxCross2 onClick={()=>{deleteData(index)}} size={20} className='text-red-800 cursor-pointer font-medium' />
+              </div>
+            ))
+          }
+
+        </div>
+      }
       <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
         <div>
           <label
