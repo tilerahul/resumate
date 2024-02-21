@@ -8,9 +8,6 @@ function Home() {
       <Hero/>
       <Templates/>
       <Feature/>
-
-
-      
     </>
   );
 }
