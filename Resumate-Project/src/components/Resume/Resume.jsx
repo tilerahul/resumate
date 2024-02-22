@@ -16,7 +16,7 @@ const Resume = () => {
 
   return (
     <>
-      <div className="py-16 flex gap-5">
+      <div className="py-16 flex gap-5 ">
         <div className="h-auto bg-slate-100 pt-10 fixed">
           <ul className=" p-4 flex flex-col font-medium cursor-pointer gap-1">
             <li onClick={() => setSection("basicInfo")} className={section === 'basicInfo' ? 'bg-slate-300 px-2 py-1 rounded' : "bg-slate-100 px-2 py-1 rounded"}>Basic information</li>
