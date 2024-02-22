@@ -74,9 +74,9 @@ function Navbar() {
   }, []);
 
   return (
-    <div className='w-[100vw] bg-white fixed z-100'>
-      <div className="bg-blue-500 w-11/12">
-        <nav className="relative px-4 py-4 flex justify-between items-center bg-white">
+    <div className='w-[100%] bg-gray-200 fixed z-100 shadow-lg'>
+      <div className="bg-blue-500 w-11/12 ">
+        <nav className="relative px-4 py-4 flex justify-between items-center bg-gray-200 shadow-2xl ">
           <Link className="text-3xl font-bold leading-none" to="/">
             <div className="ml-5 h-10 flex gap-2" alt="logo" viewBox="0 0 10240 10240">
               <Link to="/" className='flex gap-2'>
@@ -95,31 +95,31 @@ function Navbar() {
             </button>
           </div>
           <ul className="hidden absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 lg:mx-auto lg:flex lg:items-center lg:w-auto lg:space-x-6">
-            <li><NavLink to="/" className="text-sm text-gray-400 hover:text-gray-500">Home</NavLink></li>
-            <li className="text-gray-300">
+            <li><NavLink to="/" className="text-md text-black hover:text-gray-500">Home</NavLink></li>
+            <li className="text-black">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
             </li>
-            <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="/about">About Us</NavLink></li>
-            <li className="text-gray-300">
+            <li><NavLink className="text-md text-black  hover:text-gray-500" to="/about">About Us</NavLink></li>
+            <li className="text-black">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
             </li>
-            <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="/faq">FAQ</NavLink></li>
-            <li className="text-gray-300">
+            <li><NavLink className="text-md text-black hover:text-gray-500" to="/faq">FAQ</NavLink></li>
+            <li className="text-black">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
             </li>
-            <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="/blog">Blog</NavLink></li>
-            <li className="text-gray-300">
+            <li><NavLink className="text-md text-black hover:text-gray-500" to="/blog">Blog</NavLink></li>
+            <li className="text-black">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
             </li>
-            <li><NavLink className="text-sm text-gray-400 hover:text-gray-500" to="contact">Contact</NavLink></li>
+            <li><NavLink className="text-md text-black hover:text-gray-500" to="contact">Contact</NavLink></li>
           </ul>
           {!state.isAuthenticated && <div>
             <Link to="/login" className="hidden lg:inline-block lg:ml-auto lg:mr-3 py-2 px-6 bg-gray-50 hover:bg-gray-100 text-sm text-gray-900 font-bold  rounded-xl transition duration-200 text-decoration-none">Sign In</Link>
@@ -152,7 +152,7 @@ function Navbar() {
         </nav>
         <div className="navbar-menu relative z-50 hidden">
           <div className="navbar-backdrop fixed inset-0 bg-gray-800 opacity-25"></div>
-          <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-white border-r overflow-y-auto">
+          <nav className="fixed top-0 left-0 bottom-0 flex flex-col w-5/6 max-w-sm py-6 px-6 bg-[#80C7BD] border-r overflow-y-auto">
             <div className="flex items-center mb-8">
               <Link className="mr-auto text-3xl font-bold leading-none" to="/">
                 <div className="ml-5 h-10 flex gap-2" alt="logo" viewBox="0 0 10240 10240">

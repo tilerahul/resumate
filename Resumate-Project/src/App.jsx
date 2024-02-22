@@ -12,8 +12,9 @@ import Faq from './components/faq/Faq';
 import Resume from './components/Resume/Resume';
 import Project from './components/Resume/Section/Project';
 import Feature from './components/feature';
-
-
+import Blog from './components/Resume/Blog/Blog';
+import CraftingBlog from './components/Resume/Blog/CraftingBlog';
+import TailorResume from './components/Resume/Blog/TailorResume';
 function App() {
   return (
       <Router>
@@ -25,6 +26,9 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/about" element={<About />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog1" element={<CraftingBlog />} />
+          <Route path="/blog2" element={<TailorResume />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/resume/project" element={<Project />} />
