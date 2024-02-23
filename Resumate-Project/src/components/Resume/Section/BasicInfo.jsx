@@ -1,46 +1,53 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import { AppContext } from "../../../Context/appContext";
 
 const BasicInfo = () => {
-  const { setSection, setResumeData } = useContext(AppContext);
+  const { setSection, setResumeData, resumeData } = useContext(AppContext);
   const [basicInfo, setBasicInfo] = useState({
     firstName: '',
     lastName: '',
-    jobTitle : '',
+    jobTitle: '',
     email: '',
     phone: '',
     github: '',
     linkedin: '',
     address: '',
     objective: ''
-  })
+  });
+
+  useEffect(() => {
+    if (resumeData.BasicInfo) {
+      setBasicInfo(resumeData.BasicInfo);
+    }
+  }, [resumeData]);
 
   const changeHandler = (e) => {
     setBasicInfo({
       ...basicInfo,
       [e.target.name]: e.target.value,
-    })
-  }
+    });
+  };
+
   const submitHandler = (e) => {
     e.preventDefault();
     setResumeData((prev) => ({
       ...prev,
       BasicInfo: basicInfo
-    }))
-    toast.success("Data save Successfully");
+    }));
+    toast.success("Data saved successfully");
     setSection('education');
-  }
+  };
 
   const nextClick = (e) => {
     e.preventDefault();
     setSection('education');
-  }
+  };
 
   return (
     <div>
       <h3 className="font-bold py-3 text-xl">Basic information</h3>
-      <form className="space-y-4 md:space-y-6" >
+      <form className="space-y-4 md:space-y-6" onSubmit={submitHandler}>
         <div className="flex gap-2">
           <div className="w-1/2">
             <label
@@ -71,7 +78,6 @@ const BasicInfo = () => {
                 type="text"
                 name="lastName"
                 id="lastName"
-
                 value={basicInfo.lastName}
                 onChange={changeHandler}
                 placeholder="Enter Your Last Name"
@@ -219,11 +225,10 @@ const BasicInfo = () => {
             />
           </div>
         </div>
-        <div className='flex gap-2'>
+        <div className="flex gap-2">
           <button
             type="submit"
-            name='submit'
-            onClick={submitHandler}
+            name="submit"
             className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
             Save

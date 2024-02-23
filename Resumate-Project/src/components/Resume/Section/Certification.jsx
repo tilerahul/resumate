@@ -1,54 +1,73 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 import { RxCross2 } from "react-icons/rx";
 
 const Certification = () => {
-
-  const {setSection, setResumeData, resumeData} = useContext(AppContext);
-
+  const { setSection, setResumeData, resumeData } = useContext(AppContext);
   const [certification, setCertification] = useState({
-    title : '',
-  })
+    title: '',
+  });
+  const [editIndex, setEditIndex] = useState(null);
 
-  const changeHandler = (e) =>{
+  const changeHandler = (e) => {
     setCertification({
       ...certification,
-      [e.target.name] : e.target.value,
+      [e.target.name]: e.target.value,
     })
   }
-  const submitHandler = (e) =>{
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    setResumeData((prev)=>({
-      ...prev, 
-      Certification : [...prev.Certification,certification]
-    }));    
-    toast.success("Data save Successfully");
+    if (editIndex !== null) {
+      const updatedCertifications = [...resumeData.Certification];
+      updatedCertifications[editIndex] = certification;
+      setResumeData((prev) => ({
+        ...prev,
+        Certification: updatedCertifications
+      }))
+      setEditIndex(null);
+    } else {
+      setResumeData((prev) => ({
+        ...prev,
+        Certification: [...prev.Certification, certification]
+      }))
+    }
+    toast.success("Data saved Successfully");
+    setCertification({
+      title: ''
+    });
     setSection('languages');
   }
 
-  const addFields = () =>{
-    setResumeData((prev)=>({
-      ...prev, 
-      Certification : [...prev.Certification,certification]
-    }));  
+  const addFields = () => {
+    setResumeData((prev) => ({
+      ...prev,
+      Certification: [...prev.Certification, certification]
+    }));
     setCertification({
-      title : ''
+      title: ''
     })
   }
+
   const nextClick = (e) => {
     e.preventDefault();
     setSection('languages');
   }
 
-  const deleteData = (index) =>{
+  const deleteData = (index) => {
     const updatedData = [...resumeData.Certification];
     updatedData.splice(index, 1);
     setResumeData({
       ...resumeData,
-      Certification : updatedData
+      Certification: updatedData
     })
+  }
+
+  const editData = (index) => {
+    setCertification(resumeData.Certification[index]);
+    setEditIndex(index);
   }
 
   return (
@@ -63,7 +82,8 @@ const Certification = () => {
             resumeData.Certification.map((data, index) => (
               <div key={index} className='flex items-center gap-2 bg-slate-200 px-3 py-1 rounded-lg'>
                 <h3 className='font-medium'>Certification {index + 1}</h3>
-                <RxCross2 onClick={()=>{deleteData(index)}} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <RxCross2 onClick={() => deleteData(index)} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <IoAddCircleSharp onClick={() => editData(index)} size={20} className='text-green-800 cursor-pointer font-medium' />
               </div>
             ))
           }
@@ -94,10 +114,9 @@ const Certification = () => {
           <button
             type="submit"
             name='submit'
-            onClick={submitHandler}
             className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
-            Save
+            {editIndex !== null ? "Update" : "Save"}
           </button>
           <button
             onClick={nextClick}
@@ -106,9 +125,9 @@ const Certification = () => {
             Next
           </button>
         </div>
-        </form>
+      </form>
     </div>
   )
 }
 
-export default Certification
+export default Certification;

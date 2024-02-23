@@ -1,65 +1,86 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react';
 import toast from "react-hot-toast";
-import { IoAddCircleSharp } from "react-icons/io5";
+import { IoAddCircleSharp, IoPencil } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 import { RxCross2 } from "react-icons/rx";
 
 const Education = () => {
-  const { setSection, setResumeData, resumeData } = useContext(AppContext)
+  const { setSection, setResumeData, resumeData } = useContext(AppContext);
   const [education, setEducation] = useState({
     college: '',
     degree: '',
     CGPA: '',
     completionDate: '',
     description: ''
-  })
+  });
+  const [editIndex, setEditIndex] = useState(null);
 
   const changeHandler = (e) => {
     setEducation({
       ...education,
       [e.target.name]: e.target.value,
-    })
-  }
-  const submitHandler = (e) => {
-    e.preventDefault();
-    setResumeData((prev) => ({
-      ...prev,
-      Education: [...prev.Education, education]
-    }))
-    toast.success("Data save Successfully");
-    setSection('skills');
-  }
-  const addFields = () => {
-    setResumeData((prev) => ({
-      ...prev,
-      Education: [...prev.Education, education]
-    }))
+    });
+  };
+
+  const clearForm = () => {
     setEducation({
       college: '',
       degree: '',
       CGPA: '',
       completionDate: '',
       description: ''
-    })
-  }
+    });
+    setEditIndex(null);
+  };
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (editIndex !== null) {
+      const updatedEducation = [...resumeData.Education];
+      updatedEducation[editIndex] = education;
+      setResumeData({
+        ...resumeData,
+        Education: updatedEducation
+      });
+      toast.success("Education updated successfully");
+      clearForm();
+    } else {
+      setResumeData((prev) => ({
+        ...prev,
+        Education: [...prev.Education, education]
+      }));
+      toast.success("Education saved successfully");
+      clearForm();
+    }
+    setSection('skills');
+  };
+
+  const editEducation = (index) => {
+    setEditIndex(index);
+    const educationToEdit = resumeData.Education[index];
+    setEducation(educationToEdit);
+  };
+
+  const deleteEducation = (index) => {
+    const updatedEducation = [...resumeData.Education];
+    updatedEducation.splice(index, 1);
+    setResumeData({
+      ...resumeData,
+      Education: updatedEducation
+    });
+    toast.success("Education deleted successfully");
+  };
+
   const nextClick = (e) => {
     e.preventDefault();
     setSection('skills');
-  }
-  
-  const deleteData = (index) =>{
-    const updatedData = [...resumeData.Education];
-    updatedData.splice(index, 1);
-    setResumeData({
-      ...resumeData,
-      Education : updatedData
-    })
-  }
+  };
+
   return (
     <div>
       <div className='flex items-center justify-between'>
         <h3 className="font-bold py-3 text-xl">Education</h3>
-        <IoAddCircleSharp onClick={addFields} size={25} className='mx-3 cursor-pointer' />
+        <IoAddCircleSharp onClick={() => clearForm()} size={25} className='mx-3 cursor-pointer' />
       </div>
       {resumeData.Education.length > 0 &&
         <div className='m-2 flex gap-2 flex-wrap'>
@@ -67,7 +88,10 @@ const Education = () => {
             resumeData.Education.map((data, index) => (
               <div key={index} className='flex items-center gap-2 bg-slate-200 px-3 py-1 rounded-lg'>
                 <h3 className='font-medium'>Education {index + 1}</h3>
-                <RxCross2 onClick={()=>{deleteData(index)}} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <div className="flex gap-2">
+                  <IoAddCircleSharp onClick={() => editEducation(index)} size={20} className='text-green-800 cursor-pointer font-medium' />
+                  <RxCross2 onClick={() => deleteEducation(index)} size={20} className='text-red-800 cursor-pointer font-medium' />
+                </div>
               </div>
             ))
           }
@@ -175,10 +199,9 @@ const Education = () => {
           <button
             type="submit"
             name='submit'
-            onClick={submitHandler}
             className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
-            Save
+            {editIndex !== null ? "Update" : "Save"}
           </button>
           <button
             onClick={nextClick}
@@ -189,7 +212,7 @@ const Education = () => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
 
-export default Education
+export default Education;

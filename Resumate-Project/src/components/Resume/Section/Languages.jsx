@@ -1,38 +1,53 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 import { RxCross2 } from "react-icons/rx";
 
 const Languages = () => {
+  const { setSection, setResumeData, resumeData } = useContext(AppContext);
+  const [language, setLanguage] = useState({
+    language: ''
+  });
+  const [editIndex, setEditIndex] = useState(null);
 
-  const {setSection, setResumeData, resumeData} = useContext(AppContext);
-  const [languages, setLanguages] = useState({
-    language : ''
-  })
-  const changeHandler = (e) =>{
-    setLanguages({
-      ...languages,
-      [e.target.name] : e.target.value,
+  const changeHandler = (e) => {
+    setLanguage({
+      ...language,
+      [e.target.name]: e.target.value,
     })
   }
-  const submitHandler = (e) =>{
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    setResumeData((prev)=>({
-      ...prev, 
-      Languages : [...prev.Languages,languages]
-    }))
-    toast.success("Data save Successfully");
+    if (editIndex !== null) {
+      const updatedLanguages = [...resumeData.Languages];
+      updatedLanguages[editIndex] = language;
+      setResumeData((prev) => ({
+        ...prev,
+        Languages: updatedLanguages
+      }))
+      setEditIndex(null);
+    } else {
+      setResumeData((prev) => ({
+        ...prev,
+        Languages: [...prev.Languages, language]
+      }))
+    }
+    toast.success("Data saved Successfully");
+    setLanguage({
+      language: ''
+    });
     setSection('other');
   }
 
-  const addFields = () =>{
-    setResumeData((prev)=>({
-      ...prev, 
-      Languages : [...prev.Languages,languages]
-    }))
-    setLanguages({
-      language : ''
+  const addFields = () => {
+    setResumeData((prev) => ({
+      ...prev,
+      Languages: [...prev.Languages, language]
+    }));
+    setLanguage({
+      language: ''
     })
   }
 
@@ -41,13 +56,18 @@ const Languages = () => {
     setSection('other');
   }
 
-  const deleteData = (index) =>{
+  const deleteData = (index) => {
     const updatedData = [...resumeData.Languages];
     updatedData.splice(index, 1);
     setResumeData({
       ...resumeData,
-      Languages : updatedData
+      Languages: updatedData
     })
+  }
+
+  const editData = (index) => {
+    setLanguage(resumeData.Languages[index]);
+    setEditIndex(index);
   }
 
   return (
@@ -62,7 +82,8 @@ const Languages = () => {
             resumeData.Languages.map((data, index) => (
               <div key={index} className='flex items-center gap-2 bg-slate-200 px-3 py-1 rounded-lg'>
                 <h3 className='font-medium'>{data.language}</h3>
-                <RxCross2 onClick={()=>{deleteData(index)}} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <RxCross2 onClick={() => deleteData(index)} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <IoAddCircleSharp onClick={() => editData(index)} size={20} className='text-green-800 cursor-pointer font-medium' />
               </div>
             ))
           }
@@ -82,7 +103,7 @@ const Languages = () => {
               type="text"
               name="language"
               id="language"
-              value={languages.language}
+              value={language.language}
               onChange={changeHandler}
               placeholder="Enter Your languages"
               className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
@@ -105,9 +126,9 @@ const Languages = () => {
             Next
           </button>
         </div>
-        </form>
+      </form>
     </div>
   )
 }
 
-export default Languages
+export default Languages;

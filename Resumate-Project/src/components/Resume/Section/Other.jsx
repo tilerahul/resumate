@@ -1,49 +1,70 @@
-import React, {useContext, useState} from 'react'
+import React, { useContext, useState } from 'react';
 import toast from "react-hot-toast";
 import { IoAddCircleSharp } from "react-icons/io5";
 import { AppContext } from '../../../Context/appContext';
 import { RxCross2 } from "react-icons/rx";
 
 const Other = () => {
-  const {setResumeData, resumeData} = useContext(AppContext)
+  const { setResumeData, resumeData } = useContext(AppContext);
   const [otherData, setOtherData] = useState({
-    title : '',
-    description : ''
-  })
+    title: '',
+    description: ''
+  });
+  const [editIndex, setEditIndex] = useState(null);
 
-  const changeHandler = (e) =>{
+  const changeHandler = (e) => {
     setOtherData({
       ...otherData,
-      [e.target.name] : e.target.value,
-    })
+      [e.target.name]: e.target.value,
+    });
   }
-  const submitHandler = (e) =>{
+
+  const submitHandler = (e) => {
     e.preventDefault();
-    setResumeData((prev)=>({
-      ...prev, 
-      Other : [...prev.Other,otherData]
-    }))
-    toast.success("Data save Successfully");
-  }
-
-  const addFields = () =>{
-    setResumeData((prev)=>({
-      ...prev, 
-      Other : [...prev.Other,otherData]
-    }))
+    if (editIndex !== null) {
+      const updatedOtherData = [...resumeData.Other];
+      updatedOtherData[editIndex] = otherData;
+      setResumeData((prev) => ({
+        ...prev,
+        Other: updatedOtherData
+      }));
+      setEditIndex(null);
+    } else {
+      setResumeData((prev) => ({
+        ...prev,
+        Other: [...prev.Other, otherData]
+      }));
+    }
+    toast.success("Data saved Successfully");
     setOtherData({
-      title : '',
-      description : ''
-    })
+      title: '',
+      description: ''
+    });
   }
 
-  const deleteData = (index) =>{
+  const addFields = () => {
+    setResumeData((prev) => ({
+      ...prev,
+      Other: [...prev.Other, otherData]
+    }));
+    setOtherData({
+      title: '',
+      description: ''
+    });
+  }
+
+  const deleteData = (index) => {
     const updatedData = [...resumeData.Other];
     updatedData.splice(index, 1);
     setResumeData({
       ...resumeData,
-      Other : updatedData
-    })
+      Other: updatedData
+    });
+  }
+
+  const editData = (index) => {
+    setOtherData(resumeData.Other[index]);
+    setEditIndex(index);
   }
 
   return (
@@ -58,7 +79,8 @@ const Other = () => {
             resumeData.Other.map((data, index) => (
               <div key={index} className='flex items-center gap-2 bg-slate-200 px-3 py-1 rounded-lg'>
                 <h3 className='font-medium'>{data.title}</h3>
-                <RxCross2 onClick={()=>{deleteData(index)}} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <RxCross2 onClick={() => deleteData(index)} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <IoAddCircleSharp onClick={() => editData(index)} size={20} className='text-green-800 cursor-pointer font-medium' />
               </div>
             ))
           }
@@ -115,9 +137,9 @@ const Other = () => {
             Save
           </button>
         </div>
-        </form>
+      </form>
     </div>
   )
 }
 
-export default Other
+export default Other;

@@ -5,15 +5,14 @@ import { AppContext } from '../../../Context/appContext';
 import { RxCross2 } from "react-icons/rx";
 
 const Project = () => {
-
   const { setSection, setResumeData, resumeData } = useContext(AppContext);
-
   const [projectData, setProjectData] = useState({
     projectName: '',
     startDate: '',
     completionDate: '',
     description: ''
-  })
+  });
+  const [editIndex, setEditIndex] = useState(null);
 
   const changeHandler = (e) => {
     setProjectData({
@@ -21,13 +20,30 @@ const Project = () => {
       [e.target.name]: e.target.value,
     })
   }
+
   const submitHandler = (e) => {
     e.preventDefault();
-    setResumeData((prev) => ({
-      ...prev,
-      Project: [...prev.Project, projectData]
-    }))
-    toast.success("Data save Successfully");
+    if (editIndex !== null) {
+      const updatedProjectData = [...resumeData.Project];
+      updatedProjectData[editIndex] = projectData;
+      setResumeData((prev) => ({
+        ...prev,
+        Project: updatedProjectData
+      }))
+      setEditIndex(null);
+    } else {
+      setResumeData((prev) => ({
+        ...prev,
+        Project: [...prev.Project, projectData]
+      }))
+    }
+    toast.success("Data saved Successfully");
+    setProjectData({
+      projectName: '',
+      startDate: '',
+      completionDate: '',
+      description: ''
+    });
     setSection('achievement');
   }
 
@@ -49,13 +65,18 @@ const Project = () => {
     setSection('achievement');
   }
 
-  const deleteData = (index) =>{
+  const deleteData = (index) => {
     const updatedData = [...resumeData.Project];
     updatedData.splice(index, 1);
     setResumeData({
       ...resumeData,
-      Project : updatedData
+      Project: updatedData
     })
+  }
+
+  const editData = (index) => {
+    setProjectData(resumeData.Project[index]);
+    setEditIndex(index);
   }
 
   return (
@@ -70,7 +91,8 @@ const Project = () => {
             resumeData.Project.map((data, index) => (
               <div key={index} className='flex items-center gap-2 bg-slate-200 px-3 py-1 rounded-lg'>
                 <h3 className='font-medium'>Project {index + 1}</h3>
-                <RxCross2 onClick={()=>{deleteData(index)}} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <RxCross2 onClick={() => deleteData(index)} size={20} className='text-red-800 cursor-pointer font-medium' />
+                <IoAddCircleSharp onClick={() => editData(index)} size={20} className='text-green-800 cursor-pointer font-medium' />
               </div>
             ))
           }
@@ -159,10 +181,9 @@ const Project = () => {
           <button
             type="submit"
             name='submit'
-            onClick={submitHandler}
             className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
-            Save
+            {editIndex !== null ? "Update" : "Save"}
           </button>
           <button
             onClick={nextClick}
@@ -176,4 +197,4 @@ const Project = () => {
   )
 }
 
-export default Project
+export default Project;
