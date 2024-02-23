@@ -15,9 +15,11 @@ import Feature from './components/feature';
 import Blog from './components/Resume/Blog/Blog';
 import CraftingBlog from './components/Resume/Blog/CraftingBlog';
 import TailorResume from './components/Resume/Blog/TailorResume';
+import ScrollToTop from './components/Resume/Section/ScrollToTop';
 function App() {
   return (
       <Router>
+        <ScrollToTop />
         <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
