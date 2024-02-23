@@ -35,7 +35,7 @@ function Contact() {
                 <img className="w-8 h-8 mr-2" src="logo.png" alt="logo" />
                 Resumate
               </div>
-              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
+              <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white text-center">
                 Contact With Us
               </h1>
               <form className="space-y-4 md:space-y-6">
