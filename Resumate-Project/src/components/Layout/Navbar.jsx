@@ -74,7 +74,7 @@ function Navbar() {
   }, []);
 
   return (
-    <div className='w-[100%] bg-gray-100 fixed z-100 shadow'>
+    <div className='w-[100%] bg-gray-200 sticky top-0 z-100 shadow-lg'>
       <div className="bg-blue-500 w-11/12 ">
         <nav className="relative px-4 py-4 flex justify-between items-center bg-gray-100  ">
           <Link className="text-3xl font-bold leading-none" to="/">
@@ -107,7 +107,7 @@ function Navbar() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
               </svg>
             </li>
-            <li><NavLink className="text-md text-black hover:text-gray-500" to="/faq">FAQ</NavLink></li>
+            <li><NavLink className="text-md text-black hover:text-gray-500" to="/featurepath#faqSection">FAQ</NavLink></li>
             <li className="text-black">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" className="w-4 h-4 current-fill" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 5v0m0 7v0m0 7v0m0-13a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />

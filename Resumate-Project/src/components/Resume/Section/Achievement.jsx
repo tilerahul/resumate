@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import toast from "react-hot-toast";
-import { IoAddCircleSharp, IoPencil } from "react-icons/io5"; // Added IoPencil for edit icon
+import { IoAddCircleSharp } from "react-icons/io5"; // Added IoPencil for edit icon
 import { AppContext } from '../../../Context/appContext';
 import { RxCross2 } from "react-icons/rx";
+import { FaEdit } from "react-icons/fa";
 
 const Achievement = () => {
   const { setSection, setResumeData, resumeData } = useContext(AppContext);
@@ -37,7 +38,6 @@ const Achievement = () => {
       toast.success("Achievement saved successfully");
     }
     setAchievementData({ title: '' });
-    setSection('certification');
   }
 
   const addFields = () => {
@@ -75,7 +75,7 @@ const Achievement = () => {
           {resumeData.Achievement.map((data, index) => (
             <div key={index} className='flex items-center gap-2 bg-slate-200 px-3 py-1 rounded-lg'>
               <h3 className='font-medium'>{data.title}</h3>
-              <IoPencil onClick={() => editData(index)} size={20} className='text-blue-800 cursor-pointer' /> {/* Replaced 'Edit' text with IoPencil icon */}
+              <FaEdit onClick={() => editData(index)} size={15} className='text-blue-800 cursor-pointer' /> {/* Replaced 'Edit' text with IoPencil icon */}
               <RxCross2 onClick={() => deleteData(index)} size={20} className='text-red-800 cursor-pointer font-medium' />
             </div>
           ))}

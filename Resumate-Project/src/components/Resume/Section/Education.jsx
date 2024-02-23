@@ -51,8 +51,7 @@ const Education = () => {
       }));
       toast.success("Education saved successfully");
       clearForm();
-    }
-    setSection('skills');
+    }s
   };
 
   const addFields = () => {

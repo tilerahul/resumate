@@ -31,7 +31,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog1" element={<CraftingBlog />} />
           <Route path="/blog2" element={<TailorResume />} />
-          <Route path="/faq" element={<Faq />} />
+          {/* <Route path="/faq" element={<Faq />} /> */}
           <Route path="/resume" element={<Resume />} />
           <Route path="/resume/project" element={<Project />} />
           <Route path="/featurepath" element={<Feature />} />

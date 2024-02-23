@@ -1,19 +1,10 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AppContext } from '../Context/appContext';
-import { useAuth } from '../../Reducers/Authentication/AuthContext';
-import toast from 'react-hot-toast';
-
 function Hero() {
-  const { data } = useContext(AppContext);
-  const { state } = useAuth();
+
   const navigate = useNavigate(); 
   const handleButtonClick = () => {
-    if (!state.isAuthenticated) {
-      toast.error('Please login First');
-    } else {
       navigate('/resume');
-    }
   };
 
   return (

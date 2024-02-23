@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useEffect, useRef } from "react";
 import BasicInfo from "./Section/BasicInfo";
 import Achievement from "./Section/Achievement"
 import Certification from './Section/Certification'
@@ -10,9 +10,21 @@ import Skills from './Section/Skills'
 import WorkExperience from './Section/WorkExperience'
 import ResumePreview from "./ResumePreview";
 import { AppContext } from "../../Context/appContext";
+import { useAuth } from "../../../Reducers/Authentication/AuthContext";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Resume = () => {
   const { section, setSection } = useContext(AppContext);
+  const navigate = useNavigate();
+  const {isAuthenticated} = useAuth().state;
+
+  useEffect(()=>{
+    if(!isAuthenticated){
+      toast.error('Please Login First !!');
+      navigate('/login');
+    }
+  })
 
   return (
     <>
