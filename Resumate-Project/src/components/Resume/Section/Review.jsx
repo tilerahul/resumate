@@ -7,7 +7,7 @@ function Review() {
 <div className="mt-5 mx-auto text-center md:max-w-xl lg:max-w-3xl">
   <h3
     className="mb-6 text-3xl font-bold text-neutral-800 dark:text-neutral-200 font-sans">
-    Customer Reviews
+    Users Reviews
   </h3>
 </div>
 

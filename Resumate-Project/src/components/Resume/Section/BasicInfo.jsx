@@ -38,7 +38,7 @@ const BasicInfo = () => {
   }
 
   return (
-    <div>
+    <div className="shadow-lg p-4">
       <h3 className="font-bold py-3 text-xl">Basic information</h3>
       <form className="space-y-4 md:space-y-6" >
         <div className="flex gap-2">
