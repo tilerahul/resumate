@@ -77,7 +77,7 @@ const Skills = () => {
               <div key={index} className='flex items-center gap-2 bg-slate-200 px-3 py-1 rounded-lg'>
                 <h3 className='font-medium'>{data.skill}</h3>
                 <div className="flex gap-2">
-                  <IoAddCircleSharp onClick={() => editSkill(index)} size={20} className='text-green-800 cursor-pointer font-medium' />
+                  <IoPencil onClick={() => editSkill(index)} size={20} className='text-blue-800 cursor-pointer font-medium' />
                   <RxCross2 onClick={() => deleteSkill(index)} size={20} className='text-red-800 cursor-pointer font-medium' />
                 </div>
               </div>

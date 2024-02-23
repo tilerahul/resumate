@@ -74,14 +74,14 @@ function Navbar() {
   }, []);
 
   return (
-    <div className='w-[100%] bg-gray-200 fixed z-100 shadow-lg'>
+    <div className='w-[100%] bg-gray-100 fixed z-100 shadow'>
       <div className="bg-blue-500 w-11/12 ">
-        <nav className="relative px-4 py-4 flex justify-between items-center bg-gray-200 shadow-2xl ">
+        <nav className="relative px-4 py-4 flex justify-between items-center bg-gray-100  ">
           <Link className="text-3xl font-bold leading-none" to="/">
             <div className="ml-5 h-10 flex gap-2" alt="logo" viewBox="0 0 10240 10240">
               <Link to="/" className='flex gap-2'>
                 <img src="logo.png" alt="" className="h-8 w-8 " />
-                <h1 className="font-medium font-serif">Resumate</h1>
+                <h1 className="font-medium font-[Times New Roman]">Resumate</h1>
               </Link>
 
             </div>

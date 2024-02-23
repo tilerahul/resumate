@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 function Blog() {
     return (
         <>
-        <div className="p-20 pb-3 bg-gray-100">
-        <div className="bg-gray-100 py-12">
+        <div className="p-20 pb-3 bg-white">
+        <div className="bg-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
