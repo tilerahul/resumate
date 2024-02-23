@@ -83,7 +83,7 @@ const WorkExperience = () => {
   }
 
   return (
-    <div>
+    <div className="shadow-lg p-4">
       <div className='flex items-center justify-between'>
         <h3 className="font-bold py-3 text-xl">Work Experience</h3>
         <IoAddCircleSharp onClick={addFields} size={25} className='mx-3 cursor-pointer' />
