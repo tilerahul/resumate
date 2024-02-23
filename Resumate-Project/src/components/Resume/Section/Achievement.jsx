@@ -41,7 +41,13 @@ const Achievement = () => {
   }
 
   const addFields = () => {
-    submitHandler();
+    setResumeData((prev) => ({
+      ...prev,
+      Achievement: [...prev.Achievement, achievementData]
+    }))
+    setAchievementData({
+      Achievement:''
+    })
   }
 
   const editData = (index) => {

@@ -48,6 +48,16 @@ const Skills = () => {
     setSection('workExperience');
   };
 
+  const addFields = () => {
+    setResumeData((prev) => ({
+      ...prev,
+      Skills: [...prev.Skills, skillsData]
+    }))
+    setSkillsData({
+      skill: ''
+    })
+  }
+
   const editSkill = (index) => {
     setEditIndex(index);
     const skillToEdit = resumeData.Skills[index];
@@ -68,7 +78,7 @@ const Skills = () => {
     <div className="shadow-lg p-4">
       <div className='flex items-center justify-between'>
         <h3 className="font-bold py-3 text-xl">Skills</h3>
-        <IoAddCircleSharp onClick={() => clearForm()} size={25} className='mx-3 cursor-pointer' />
+        <IoAddCircleSharp onClick={addFields} size={25} className='mx-3 cursor-pointer' />
       </div>
       {resumeData.Skills.length > 0 &&
         <div className='m-2 flex gap-2 flex-wrap'>
