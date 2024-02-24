@@ -18,6 +18,10 @@ const Achievement = () => {
       [e.target.name]: e.target.value,
     });
   }
+  const nextClick = (e) => {
+    e.preventDefault();
+    setSection('certification');
+  }
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -38,6 +42,7 @@ const Achievement = () => {
       toast.success("Achievement saved successfully");
     }
     setAchievementData({ title: '' });
+    setSection('certification');
   }
 
   const addFields = () => {
@@ -110,10 +115,10 @@ const Achievement = () => {
             {editIndex !== null ? 'Update' : 'Save'}
           </button>
           <button
-            onClick={addFields}
+            onClick={nextClick}
             className="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
           >
-            Add Another
+            Next
           </button>
         </div>
       </form>
