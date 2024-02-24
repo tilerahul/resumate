@@ -3,7 +3,7 @@ import React from 'react'
 function CraftingBlog() {
     return (
         <>
-        <div className="p-20 pb-3 bg-gray-100">
+        <div className="p-15 pb-3 bg-gray-100">
             <div className="bg-gray-100 py-12">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:text-center">

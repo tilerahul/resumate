@@ -74,7 +74,7 @@ function Navbar() {
   }, []);
 
   return (
-    <div className='w-[100%] bg-gray-200 sticky top-0 z-100 shadow-lg'>
+    <div className='w-[100%] bg-gray-100 sticky top-0 z-100 shadow-lg'>
       <div className="bg-blue-500 w-11/12 ">
         <nav className="relative px-4 py-4 flex justify-between items-center bg-gray-100  ">
           <Link className="text-3xl font-bold leading-none" to="/">

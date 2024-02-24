@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 function Blog() {
     return (
         <>
-        <div className="p-20 pb-3 bg-white">
+        <div className="p-15 pb-3 bg-white">
         <div className="bg-white py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
