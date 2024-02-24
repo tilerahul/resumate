@@ -17,7 +17,7 @@ const ResumePreview = () => {
     return (
         <>
             <button onClick={printHandler} type="button" className="text-white bg-[#2CACD5] hover:bg-[rgb(103,176,200)] focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Download Your Resume</button>
-            <div className='border shadow-lg rounded w-[558px] h-[984px]'>
+            <div className='border shadow-lg rounded  min-w-[650px] min-h-[900px]'>
                 <div className="bg-white w-full h-full rounded-lg p-6 inline-block m-auto" ref={compPDF} style={{ widows: '595px' }}>
 
                     {/* Basic Info Section */}
