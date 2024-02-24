@@ -60,6 +60,13 @@ const login = async (req, res) =>{
 const register = async (req, res) =>{
     try {
         const {firstName, lastName, email, phone, password, cpassword} = req.body;
+
+        if(!firstName || !lastName || !email || !phone || !password || !cpassword){
+            return res.status(400).json({
+                success : false,
+                message : 'All Fields are mandatory',
+            })
+        }
         const userExist = await User.findOne({email});
         if(userExist){
             return res.status(400).json({
