@@ -43,7 +43,7 @@ const Resume = () => {
           </ul>
         </div>
         <div className="ml-48 w-2/5">
-          <div className="pt-10">
+          <div className="pt-6">
             {
               section === 'basicInfo' && <BasicInfo />
             }
