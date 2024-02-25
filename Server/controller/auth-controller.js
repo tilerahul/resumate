@@ -84,7 +84,7 @@ const register = async (req, res) =>{
         const imgUrl = `https://ui-avatars.com/api/?name=${firstName}+${lastName}`
         const userCreated = await User.create({firstName, lastName, email, phone, password:hashPassword, imgUrl});
 
-        return res.status(404).json({
+        return res.status(200).json({
             success : true,
             message : 'Registration Successful',
             userId : userCreated._id.toString(),

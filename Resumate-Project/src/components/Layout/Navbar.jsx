@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link, NavLink,useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { IoMdArrowDropdown, IoMdArrowDropup } from "react-icons/io";
 import { useAuth } from '../../../Reducers/Authentication/AuthContext';
 import toast from 'react-hot-toast';
@@ -10,6 +10,17 @@ function Navbar() {
   const { state, logout } = useAuth();
   const [dropDown, setDropDown] = useState(false);
   const navigate = useNavigate();
+
+  const dropDownRef = useRef();
+
+  useEffect(()=>{
+    const handleClickOutside = (event) => {
+      if (!dropDownRef?.current?.contains(event.target)) {
+        setDropDown(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+  }, [dropDownRef]);
 
   useEffect(() => {
     setDropDown(false);
@@ -129,25 +140,29 @@ function Navbar() {
           {state.isAuthenticated && <div className=' flex items-center gap-2 font-medium relative'>
             <p>{`${state.user.firstName} ${state.user.lastName}`}</p>
             <img src={state.user.imgUrl} className='rounded-full w-[35px]' alt="img" />
-            {dropDown ? (<IoMdArrowDropup onClick={() => { setDropDown(!dropDown) }} />) :
-              (<IoMdArrowDropdown onClick={() => { setDropDown(!dropDown) }} />)
-            }
-            {
-              dropDown && <div className='absolute top-9 left-6'>
-                <div className='w-[20px] h-[20px] bg-slate-100 rounded-md absolute -top-2 rotate-45 right-[82px]'></div>
-                <div className='w-[200px] h-[80px] bg-slate-100 rounded-md flex flex-col justify-center p-5 gap-2'>
-                  <div className='flex items-center gap-2'>
-                    <FaUser />
-                    <Link to="/profile"> Your Profile</Link>
+            <div className='cursor-pointer'>
+              {dropDown ? (<IoMdArrowDropup onClick={() => { setDropDown(!dropDown) }} />) :
+                (<IoMdArrowDropdown onClick={() => { setDropDown(!dropDown) }} />)
+              }
+            </div>
+            <div ref={dropDownRef}>
+              {
+                dropDown && <div className='absolute top-9 left-6'>
+                  <div className='w-[20px] h-[20px] bg-slate-100 rounded-md absolute -top-2 rotate-45 right-[82px]'></div>
+                  <div className='w-[200px] h-[80px] bg-slate-100 rounded-md flex flex-col justify-center p-5 gap-2'>
+                    <div className='flex items-center gap-2'>
+                      <FaUser />
+                      <Link to="/profile"> Your Profile</Link>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <RiLogoutBoxRFill />
+                      <p onClick={logoutHandler} className='cursor-pointer'>Logout</p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <RiLogoutBoxRFill />
-                    <p onClick={logoutHandler} className='cursor-pointer'>Logout</p>
-                  </div>
-                </div>
 
-              </div>
-            }
+                </div>
+              }
+            </div>
           </div>}
         </nav>
         <div className="navbar-menu relative z-50 hidden">
