@@ -8,7 +8,7 @@ import chooseSVG from '../../assets/choose.svg';
 const About = () => {
     return (
         <div className="w-full flex justify-center">
-            <div className="w-10/12 pt-24">
+            <div className="w-10/12 pt-15">
                 <div className="flex flex-col items-center">
                     <Title title='About Us' />
                     <div className="flex items-center gap-16 justify-center flex-wrap-reverse">
