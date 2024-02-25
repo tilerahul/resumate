@@ -59,6 +59,16 @@ const ResumePreview = () => {
                         </div>
                     </div>
 
+                    {/* objective section */}
+                    {resumeData.BasicInfo.objective &&
+                            <div className="pb-6">
+                            <h2 className="text-lg font-semibold">OBJECTIVE
+                            </h2>
+                            <div className="border-t-2 border-black"></div>
+                            <p className="text-gray-800 font-semibold">{resumeData.BasicInfo.objective}</p>
+                            </div>
+                    }
+
                     {/* Education Section */}
                     {resumeData.Education[0] &&
                         <div className="mb-6">

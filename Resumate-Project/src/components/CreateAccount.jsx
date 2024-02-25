@@ -49,7 +49,7 @@ function CreateAccount() {
   };
 
   return (
-    <section className="bg-gray-50 dark:bg-gray-900 pt-16">
+    <section className="bg-gray-50 dark:bg-gray-900 pt-2">
       <div className="flex flex-col items-center px-6 py-8 mx-auto h-auto md:h-auto lg:py-4">
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
