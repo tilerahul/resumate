@@ -2,5 +2,10 @@
   "dependencies": {
     "bcrypt": "^5.1.1",
     "react-bookmark": "^0.8.2"
+  },
+  "scripts": {
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "vite"
   }
 }

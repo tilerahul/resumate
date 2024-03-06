@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { useAuth } from '../../Reducers/Authentication/AuthContext';
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { BASEURL } from './BASEURL';
 
 function Login() {
   const { login } = useAuth();
@@ -24,7 +25,7 @@ function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5000/api/v1/auth/login', {
+      const response = await fetch(`${BASEURL}api/v1/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
