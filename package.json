@@ -4,8 +4,7 @@
     "react-bookmark": "^0.8.2"
   },
   "scripts": {
-    "build": "vite build",
-    "preview": "vite preview",
-    "start": "vite"
+    "build": "npm run build",
+    "start": "npm run dev"
   }
 }
