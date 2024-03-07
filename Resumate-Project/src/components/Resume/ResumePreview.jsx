@@ -76,10 +76,14 @@ const ResumePreview = () => {
                             <div className="border-t-2 border-black"></div>
                             {resumeData.Education.map((data, index) => (
                                 <div key={index}>
+                                    <div className="flex justify-between">
                                     <p className="text-gray-800 font-semibold">{`${data.college} - ${data.degree}`}</p>
+                                    <p className="text-gray-600">{data.completionDate}</p>
+                                    </div>
+                                    
                                     <p className="text-gray-600"></p>
                                     <p className="text-gray-600">{data.CGPA}</p>
-                                    <p className="text-gray-600">{data.completionDate}</p>
+                                    
                                     <p className="text-gray-600">{data.description}</p>
                                 </div>
                             ))}
@@ -107,8 +111,10 @@ const ResumePreview = () => {
                             <div className="border-t-2 border-black"></div>
                             {resumeData.WorkExperience.map((data, index) => (
                                 <div key={index} className="mb-4">
+                                    <div className="flex justify-between">
                                     <p className="text-gray-600 font-medium">{`${data.cName} - ${data.jobTitle}`}</p>
-                                    <p className="text-gray-600">{`${data.startDate} - ${data.completionDate}`}</p>
+                                    <p className="text-gray-600">{`${data.startDate} to ${data.completionDate}`}</p>
+                                    </div>
                                     <ul className="list-disc list-inside text-gray-600">
                                         <li>{data.description}</li>
                                     </ul>
@@ -124,8 +130,10 @@ const ResumePreview = () => {
                             <div className="border-t-2 border-black"></div>
                             {resumeData.Project.map((data, index) => (
                                 <div key={index}>
+                                    <div className="flex justify-between">
                                     <p className="text-gray-800 mt-3 font-semibold">{data.projectName}</p>
                                     <p className="text-gray-600">{`${data.startDate} to ${data.completionDate}`}</p>
+                                    </div>
                                     <p className="text-gray-600">{data.description}</p>
                                 </div>
                             ))}
