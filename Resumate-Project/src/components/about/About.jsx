@@ -1,5 +1,5 @@
 import Team from "./Team";
-import Title from "./title";
+import Title from "./Title"
 import aboutSVG from '../../assets/about.svg';
 import storySVG from '../../assets/story.svg';
 import offerSVG from '../../assets/offer.svg';
